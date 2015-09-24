@@ -52,7 +52,7 @@ angular.module('drone.services', [])
   // it is responsible for authenticating our user
   // by exchanging the user's username and password
   // for a JWT from the server
-  // that JWT is then stored in localStorage as 'com.shortly'
+  // that JWT is then stored in localStorage as 'com.drone'
   // after you signin/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
   var signin = function (user) {
@@ -78,11 +78,11 @@ angular.module('drone.services', [])
   };
 
   var isAuth = function () {
-    return !!$window.localStorage.getItem('com.shortly');
+    return !!$window.localStorage.getItem('com.drone');
   };
 
   var signout = function () {
-    $window.localStorage.removeItem('com.shortly');
+    $window.localStorage.removeItem('com.drone');
     $location.path('/signin');
   };
 

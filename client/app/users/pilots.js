@@ -1,6 +1,6 @@
-angular.module('shortly.shorten', [])
+angular.module('drone.shorten', [])
 
-.controller('ShortenController', function ($scope, $location, Links) {
+.controller('PilotController', function ($scope, $location, userFactory) {
   // Your code here
 
   $scope.link = {};
