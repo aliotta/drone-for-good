@@ -6,5 +6,6 @@ module.exports = function (app) {
 
   app.post('/signin', userController.signin);
   app.post('/signup', userController.signup);
+  //TODO Make sure this naming convention works
   app.get('/signedin', userController.checkAuth);
 };
