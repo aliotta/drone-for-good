@@ -2,27 +2,25 @@
 <html ng-app='drone'>
   <head>
     <meta charset="utf-8" />
-    <title>drone</title>
+    <title>Drones for Good</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
   <body>
     <nav class="navigation">
-      <ul>
-        <li>
-            <a class="selected" href="#/home">Home</a>
-        </li>
-         <li>
-            <a href="#/map">Map</a>
-        </li>
-        <li>
-            <a href="#/map">Map</a>
-        </li>
-      </ul>
+      <h1>Drone</h1>      
+      <div class="nav-items">
+        <a class="selected" href="#/home">Map</a>
+        <a href="#/map">Pilots</a>
+        <a href="#/map">Seekers</a>
+        <a href="#/map">Projects</a>    
+      </div>
     </nav>
-    <h1>Drone</h1>
+    <div class="everything-else">
+      
 
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
     <div ng-view></div>
+    </div>
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
