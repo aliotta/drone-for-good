@@ -12,6 +12,8 @@ require('./config/middleware.js')(app, express);
 
 app.listen(8000);
 
+console.log("Listerning on port 8000");
+
 module.exports = app;
 
 

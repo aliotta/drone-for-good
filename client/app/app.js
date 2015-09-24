@@ -1,7 +1,5 @@
 angular.module('drone', [
   'drone.services',
-  'drone.links',
-  'drone.shorten',
   'drone.auth',
   'ngRoute'
 ])
@@ -12,26 +10,26 @@ angular.module('drone', [
       controller: 'AuthController'
     })
     //for signing in and signing up
-    .when('/splash', {
+    .when('/signup', {
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
     })
     // Your code here
     .when('/map', {
-      templateUrl: 'app/profile/links.html',
+      templateUrl: 'app/map/map.html',
       controller: 'MapController',
       authenticate: true,
     })
-    .when('/testimonials', {
-      templateUrl: 'app/profile/links.html',
-      controller: 'TestimonialsController',
-      authenticate: true,
-    })
-    .when('/about', {
-      templateUrl: 'app/profile/links.html',
-      controller: 'AboutController',
-      authenticate: true,
-    })
+    // .when('/testimonials', {
+    //   templateUrl: 'app/profile/links.html',
+    //   controller: 'TestimonialsController',
+    //   authenticate: true,
+    // })
+    // .when('/about', {
+    //   templateUrl: 'app/profile/links.html',
+    //   controller: 'AboutController',
+    //   authenticate: true,
+    // })
     .when('/seekerProfile', {
       templateUrl: 'app/profile/links.html',
       controller: 'SeekerController',
