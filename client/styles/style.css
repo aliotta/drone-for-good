@@ -64,6 +64,20 @@ body {
   margin-right: 5px; 
 }
 
+#open-projects table {
+  display: flex; 
+  flex-direction: column;
+
+}
+
+#open-projects thead {
+  flex-grow: 1;
+}
+
+#open-projects tbody {
+  flex-grow: 6;
+}
+
 /***********************
 *****  TYPOGRAPHY  *****
 ************************/

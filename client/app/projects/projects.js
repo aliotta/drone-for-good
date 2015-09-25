@@ -1,6 +1,6 @@
 angular.module('drone.projects', [])
 
-.controller('SubmitProjectController', function ($scope, $location, ProjectFactory) {
+.controller('ProjectController', function ($scope, $location, ProjectFactory) {
   //for the adding of the project
   $scope.project = {};
   //for the retriving of all the projects
@@ -30,4 +30,7 @@ angular.module('drone.projects', [])
         console.log(error);
       });
   } 
+
+  //Invoke it initally so all projects load into the view
+  $scope.getProjects();
   });
