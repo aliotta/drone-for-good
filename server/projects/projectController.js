@@ -39,9 +39,9 @@ module.exports = {
   findProject: function (req, res, next, projectId) {
     var findProject = Q.nbind(Project.findOne, Project);
     findProject({_id: projectId})
-      .then(function (projects) {
+      .then(function (project) {
         // returns searched for project if successful.
-        res.json(projects);
+        res.json(project);
       })
       .fail(function (error) {
         next(error);
