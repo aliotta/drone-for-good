@@ -5,7 +5,11 @@ var mongoose = require('mongoose'),
 
 
 var UserSchema = new mongoose.Schema({
-  // _id: Number,
+  _id: Number,
+  email: {
+    type: String,
+    required: true
+  },
   username: {
     type: String,
     required: true,
@@ -16,23 +20,27 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  
   location: {
     type: String,
-    // required: true
+    required: true
   },
   firstName: {
     type: String,
-    // required: true
+    required: true
   },
   lastName: {
     type: String,
-    // required: true
+    required: true
   },
-  email: String,
   phoneNumber: String,
   userType: String,
   salt: String
+
 });
+
+
+
 
 UserSchema.methods.comparePasswords = function (candidatePassword) {
   var defer = Q.defer();
