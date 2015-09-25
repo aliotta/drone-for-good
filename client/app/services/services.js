@@ -37,9 +37,16 @@ angular.module('drone.services', [])
 
 })
 .factory('UserFactory', function ($http) {
-  //get method
-
-  //post method
+  //get all users function
+  var getUser = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/user'
+    })
+    .then(function (resp) {
+      return resp;
+    });
+  }
 
 })
 .factory('ProjectFactory', function ($http) {
