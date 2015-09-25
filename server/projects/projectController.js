@@ -1,86 +1,64 @@
-var Link    = require('./linkModel.js'),
+var Project = require('./projectModel.js'),
     Q       = require('q'),
     util    = require('../config/utils.js');
 
 
 module.exports = {
-  findUrl: function (req, res, next, code) {
-    var findLink = Q.nbind(Link.findOne, Link);
-    findLink({code: code})
-      .then(function (link) {
-        if (link) {
-          req.navLink = link;
-          next();
-        } else {
-          next(new Error('Link not added yet'));
-        }
-      })
-      .fail(function (error) {
-        next(error);
-      });
-  },
 
-  allLinks: function (req, res, next) {
-  var findAll = Q.nbind(Link.find, Link);
-
-  findAll({})
-    .then(function (links) {
-      res.json(links);
-    })
-    .fail(function (error) {
-      next(error);
-    });
-  },
-
-  newLink: function (req, res, next) {
-    var url = req.body.url;
-    console.log(req.body);
-    if (!util.isValidUrl(url)) {
-      return next(new Error('Not a valid url'));
+  // Initializes new project with submitted data from user  
+  newProject: function(req, res, next){
+    var project = {
+      location: req.body.location,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+      description: req.body.description,
+      expirationDate: req.body.expirationDate,
+      title: req.body.title,
+      seeker: req.body.seeker,
+      pilot: req.body.pilot
     }
 
-    var createLink = Q.nbind(Link.create, Link);
-    var findLink = Q.nbind(Link.findOne, Link);
+    // Permisifies with Q so we can use .then method rather than callbacks.
+    var createProject = Q.nbind(Project.create, Project);
 
-    findLink({url: url})
-      .then(function (match) {
-        if (match) {
-          res.send(match);
-        } else {
-          return  util.getUrlTitle(url);
+    // invoke createProject with user data.
+    createProject(project)
+      .then(function (createdProject) {
+        if(createProject){
+          // respond with json data of new user project.
+          res.json(createdProject);
         }
       })
-      .then(function (title) {
-        if (title) {
-          var newLink = {
-            url: url,
-            visits: 0,
-            base_url: req.headers.origin,
-            title: title
-          };
-          return createLink(newLink);
-        }
-      })
-      .then(function (createdLink) {
-        if (createdLink) {
-          res.json(createdLink);
-        }
+      .fail(function (err) {
+        next(err);
+      });
+
+  },
+
+  // finds a unique project by ID.
+  findProject: function (req, res, next, projectId) {
+    var findProject = Q.nbind(Project.findOne, Project);
+    findProject({_id: projectId})
+      .then(function (projects) {
+        // returns searched for project if successful.
+        res.json(projects);
       })
       .fail(function (error) {
         next(error);
       });
   },
 
-  navToLink: function (req, res, next) {
-    var link = req.navLink;
-    link.visits++;
-    link.save(function (err, savedLink) {
-      if (err) {
-        next(err);
-      } else {
-        res.redirect(savedLink.url);
-      }
-    });
+  allProjects: function (req, res, next) {
+    var findAll = Q.nbind(Project.find, Project);
+    // finds all projects in total.
+    findAll({})
+      .then(function (projects) {
+        res.json(projects);
+      })
+      .fail(function (error) {
+        next(error);
+      });
   }
+  //TODO add create new project and get all open projects
 
 };
