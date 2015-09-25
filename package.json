@@ -17,6 +17,8 @@
     "jwt-simple": "^0.2.0",
     "mongoose": "^4.1.0",
     "morgan": "^1.1.1",
+    "nodemon": "^1.7.0",
+    "normalize.css": "^3.0.3",
     "passport": "^0.2.0",
     "passport-local": "^1.0.0",
     "q": "^1.0.1",

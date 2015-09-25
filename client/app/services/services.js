@@ -28,7 +28,7 @@ angular.module('drone.services', [])
     addLink: addLink
   };
   })
-.factory('mapFactory', function ($http) {
+.factory('MapFactory', function ($http) {
   //get layer
 
   // get project from pin click
@@ -36,16 +36,33 @@ angular.module('drone.services', [])
   // post project from pin drop
 
 })
-.factory('userFactory', function ($http) {
+.factory('UserFactory', function ($http) {
   //get method
 
   //post method
 
 })
-.factory('projectFactory', function ($http) {
-  //get method
+.factory('ProjectFactory', function ($http) {
+  //make an http request with project path to fetch all
+  //entries from project table in the db
+  var getProjects = function () {
+    //get method
 
-  //post method
+  };
+
+  //make an http POST request to add a project to the
+  //project table in the DB.
+  var addProject = function () {
+    //post method
+
+  }
+
+
+  //return all functions
+  return {
+    getProjects: getProjects,
+    addProject: addProject
+  }; 
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
