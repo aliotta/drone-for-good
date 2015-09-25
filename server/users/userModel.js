@@ -8,7 +8,7 @@ var UserSchema = new mongoose.Schema({
   // _id: Number,
   email: {
     type: String,
-    required: true
+    // required: true
   },
   username: {
     type: String,
@@ -23,15 +23,15 @@ var UserSchema = new mongoose.Schema({
   
   location: {
     type: String,
-    required: true
+    // required: true
   },
   firstName: {
     type: String,
-    required: true
+    // required: true
   },
   lastName: {
     type: String,
-    required: true
+    // required: true
   },
   phoneNumber: String,
   userType: String,

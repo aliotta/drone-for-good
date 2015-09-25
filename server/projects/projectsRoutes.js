@@ -1,4 +1,4 @@
-var linksController = require('./linkController.js');
+var projectsController = require('./projectsController.js');
 
 module.exports = function (app) {
   // app === linkRouter injected from middleware.js
@@ -12,11 +12,10 @@ module.exports = function (app) {
 
 
 
-  app.route('/openProjects')
-    .get(projectController.);
+  // app.route('/openProjects')
+  //   .get(projectController.);
 
-  app.route('/submitProjects')
-    .post(projectController.newProject);
+  app.post('/api/projects', projectsController.newProject);
 
  
   // app.get('/:code', projectController.navToProject);
