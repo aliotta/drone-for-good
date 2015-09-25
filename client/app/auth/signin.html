@@ -1,7 +1,9 @@
 <div id='signin'>
   <h1>Sign In</h1>
   <form name="signinForm" ng-submit='signin()'>
+    <span> Username </span>
     <input type='text'ng-model='user.username'>
+    <span> Password </span>
     <input type="password" ng-model='user.password'>
     <button>Sign In</button>
   </form>

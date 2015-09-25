@@ -1,10 +1,18 @@
 <div id='submit-projects'>
-
-  <form name="sumbitProject">
-    <input type="text" placeholder="Enter your project title"/>
-    <input type="text" placeholder="Enter your project location"/>
-    <input type="text" placeholder="Enter your project duration"/>
-    <input type="text" placeholder="Write a brief project description"/>
+<h1>Create a Project</h1>
+  <form name="sumbitProject" ng-submit="addProject()">
+    <span> What is the title of your project? </span>
+    <input type="text" ng-model="project.title" placeholder="Project title"/>
+    <span> Where will is your project? </span>
+    <input type="text" ng-model="project.location" placeholder="Project location"/>
+    <span> Project latitude </span>
+    <input type="text" ng-model="project.latitude" placeholder="Project latitude"/>
+    <span> Project longitude </span>
+    <input type="text" ng-model="project.longitude" placeholder="Project longitude"/>
+    <span> How long will your project take?  </span>
+    <input type="text" ng-model="project.duration" placeholder="Project duration"/>
+    <span> Tell us a bit about your project: </span>
+    <input type="text" ng-model="project.description" placeholder="Project description"/>
   </form>
 
 </div>
