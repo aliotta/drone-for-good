@@ -20,15 +20,15 @@ angular.module('drone', [
       controller: 'MapController',
       authenticate: true,
     })
-    .when('/openProjects') {
+    .when('/openProjects', {
       templateUrl: 'app/map/map.html',
       controller: 'MapController',
-    }
-    .when('/submitProjects') {
+    })
+    .when('/submitProjects', {
       templateUrl: 'app/map/map.html',
       controller: 'MapController',
       authenticate: true,
-    }
+    })
     // .when('/testimonials', {
     //   templateUrl: 'app/profile/links.html',
     //   controller: 'TestimonialsController',
