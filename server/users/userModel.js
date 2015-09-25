@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 
 
 var UserSchema = new mongoose.Schema({
+  _id: Number,
   username: {
     type: String,
     required: true,
@@ -15,6 +16,21 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  location: {
+    type: String,
+    required: true
+  },
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
+    type: String,
+    required: true
+  },
+  email: String,
+  phoneNumber: String,
+  userType: String,
   salt: String
 });
 
@@ -59,4 +75,4 @@ UserSchema.pre('save', function (next) {
   });
 });
 
-module.exports = mongoose.model('users', UserSchema);
+module.exports = mongoose.model('User', UserSchema);
