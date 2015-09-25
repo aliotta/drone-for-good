@@ -6,6 +6,7 @@ var morgan      = require('morgan'), // used for logging incoming request
 module.exports = function (app, express) {
   // Express 4 allows us to use multiple routers with their own configurations
   var userRouter = express.Router();
+  var projectsRouter = express.Router();
 
   //morgan is for logging get and post data to the console.
   app.use(morgan('dev'));
@@ -18,6 +19,8 @@ module.exports = function (app, express) {
   //TODO change all the routers. 
   app.use('/api/users', userRouter); // use user router for all user request
 
+  app.use('/api/projects', projectsRouter);
+
   // authentication middleware used to decode token and made available on the request
   //app.use('/api/links', helpers.decode);
   app.use(helpers.errorLogger);
@@ -26,4 +29,5 @@ module.exports = function (app, express) {
   // inject our routers into their respective route files
   //TODO this will need to change to reflect our new routers
   require('../users/userRoutes.js')(userRouter);
+  require('../projects/projectsRoutes.js')(projectsRouter);
 };

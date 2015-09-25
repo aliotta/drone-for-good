@@ -1,4 +1,4 @@
-var Project = require('./projectModel.js'),
+var Project = require('./projectsModel.js'),
     Q       = require('q'),
     util    = require('../config/utils.js');
 

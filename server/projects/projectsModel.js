@@ -12,12 +12,12 @@ var ProjectSchema = new mongoose.Schema({
   seeker: {
     type: Number,
     required: true,
-    ref: User
+    // ref: User
 
   },
   pilot:{
     type: Number,
-    ref: User
+    // ref: User
   } 
 });
 
