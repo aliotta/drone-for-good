@@ -2,27 +2,54 @@
 <html ng-app='drone'>
   <head>
     <meta charset="utf-8" />
-    <title>drone</title>
+    <title>Drones for Good</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,600italic,800italic,800,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="lib/normalize.css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
   <body>
     <nav class="navigation">
-      <ul>
-        <li>
-            <a class="selected" href="#/home">Home</a>
-        </li>
-         <li>
-            <a href="#/map">Map</a>
-        </li>
-        <li>
-            <a href="#/map">Map</a>
-        </li>
-      </ul>
+      <h1>Drones for Good</h1>      
+      <div class="nav-items">
+        <a class="selected" href="#/home">Map</a>
+        <a href="#/map">Pilots</a>
+        <a href="#/map">Seekers</a>
+        <a href="#/map">Projects</a>    
+      </div>
     </nav>
-    <h1>Drone</h1>
+    <div class="main-body">
+      
 
-    <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
-    <div ng-view></div>
+      <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
+      <div ng-view></div>
+
+      <div id="map"></div>
+
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function initialize() {
+        var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+          center: new google.maps.LatLng(37.789, -122.416),
+          zoom: 12,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+        map.data.loadGeoJson('https://raw.githubusercontent.com/mapbox/drone-feedback/master/sources/geojson/5_mile_airport.geojson');
+        map.data.loadGeoJson('https://raw.githubusercontent.com/mapbox/drone-feedback/master/sources/geojson/us_military.geojson');
+        map.data.loadGeoJson('https://raw.githubusercontent.com/mapbox/drone-feedback/master/sources/geojson/us_national_park.geojson');
+
+        map.data.setStyle({
+          fillOpacity: .5,
+          strokeWeight: 2,
+          fillColor: 'red'
+        });
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>

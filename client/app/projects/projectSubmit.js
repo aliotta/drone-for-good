@@ -1,12 +1,14 @@
-angular.module('drone.shorten', [])
+angular.module('drone.projects', [])
 
-.controller('SubmitProjectController', function ($scope, $location, projectFactory) {
-  // Your code here
+.controller('SubmitProjectController', function ($scope, $location, ProjectFactory) {
 
-  $scope.link = {};
-  $scope.addLink = function () {
+  $scope.project = {};
+  //write a function that adds a data-scope property to the
+
+
+  $scope.addProject = function () {
     $scope.loading = true;
-    Links.addLink($scope.link)
+    ProjectFactory.addProject($scope.project)
       .then(function () {
         $scope.loading = false;
         $location.path('/');
