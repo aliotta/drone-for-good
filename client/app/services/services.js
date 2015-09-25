@@ -1,33 +1,7 @@
 angular.module('drone.services', [])
 
 
-//delete me im a template
-.factory('Links', function ($http) {
-  // Your code here
-
-  var getAll = function () {
-    return $http({
-      method: 'GET',
-      url: '/api/links'
-    })
-    .then(function (resp) {
-      return resp.data;
-    });
-  };
-
-  var addLink = function (link) {
-    return $http({
-      method: 'POST',
-      url: '/api/links',
-      data: link
-    });
-  };
-
-  return {
-    getAll: getAll,
-    addLink: addLink
-  };
-  })
+//Map Factory
 .factory('MapFactory', function ($http) {
   //get layer
 
@@ -37,9 +11,16 @@ angular.module('drone.services', [])
 
 })
 .factory('UserFactory', function ($http) {
-  //get method
-
-  //post method
+  //get all users function
+  var getUser = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/user'
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  }
 
 })
 .factory('ProjectFactory', function ($http) {
@@ -47,13 +28,27 @@ angular.module('drone.services', [])
   //entries from project table in the db
   var getProjects = function () {
     //get method
-
+    return $http({
+      method: 'GET', 
+      url: '/api/projects'
+    })
+    .then(function (resp) {
+      return resp.data;
+    })
   };
 
   //make an http POST request to add a project to the
   //project table in the DB.
-  var addProject = function () {
+  var addProject = function (project) {
     //post method
+    return $http({
+      method: 'POST',
+      url: '/api/projects',
+      data: project
+    })
+    .then(function (resp) {
+      return resp;
+    })
 
   }
 

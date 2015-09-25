@@ -38,24 +38,31 @@ body {
   flex-direction: row;
 }
 
-.main-body * {
+.main-body:first-child {
+  width: 100%;
   flex-grow: 1;
-
 }
 
 #map {
-  width: 100%;
-  flex-grow: 6;
+  /*width: 100%;*/
+  flex-grow: 5;
 }
 
 #signup, #signin {
   padding: 25px;
 }
 
-#signup, #signin form {
-  display: inline-block;
+#signup form, #signin form {
+  display: flex;
+  flex-direction: column;
 } 
 
+#signup form *, #signin form *{
+  flex-grow: 1;
+  margin-top: 10px;
+  margin-left: 5px; 
+  margin-right: 5px; 
+}
 
 /***********************
 *****  TYPOGRAPHY  *****

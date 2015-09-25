@@ -1,12 +1,22 @@
 <div id='open-projects'>
 
   <!-- Use ng-repeat to list all project titles, location -->
-  <ul>
-    <li>Rainforest canopy survey, Costa Rica</li>
-    <li>Geological survey, Zion National Park</li>
-    <li>Vineyard mapping, Buenos Aires, Argentina</li>
-    <li>Biodiversity survey, Maroansetra, Madagascar</li>
-  </ul>
+  <table>
+    <thead>
+      <th>Title</th>
+      <th>Owner</th>
+      <th>Location</th>
+      <th>Time Frame</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="project in data.openProjects">
+        <td>{{ project.title }}</td>
+        <td>{{ project.seeker }}</td>
+        <td>{{ project.location }}</td>
+        <td>{{ project.duration }}</td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
 
