@@ -1,4 +1,4 @@
-angular.module('drone.shorten', [])
+angular.module('drone.seekers', [])
 
 .controller('SeekerController', function ($scope, $location, userFactory) {
   // Your code here

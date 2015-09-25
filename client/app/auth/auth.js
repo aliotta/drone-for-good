@@ -10,7 +10,7 @@ angular.module('drone.auth', [])
     Auth.signin($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.drone', token);
-        $location.path('/links');
+        $location.path('/map');
       })
       .catch(function (error) {
         console.error(error);
@@ -21,7 +21,7 @@ angular.module('drone.auth', [])
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.drone', token);
-        $location.path('/links');
+        $location.path('/map');
       })
       .catch(function (error) {
         console.error(error);

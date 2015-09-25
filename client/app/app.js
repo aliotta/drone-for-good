@@ -1,6 +1,10 @@
 angular.module('drone', [
   'drone.services',
   'drone.auth',
+  'drone.map', 
+  'drone.projects', 
+  'drone.pilots',
+  'drone.seekers',
   'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider) {
@@ -20,13 +24,13 @@ angular.module('drone', [
       controller: 'MapController',
       authenticate: true,
     })
-    .when('/openProjects', {
-      templateUrl: 'app/map/map.html',
-      controller: 'MapController',
+    .when('/projects', {
+      templateUrl: 'app/projects/openProjects.html',
+      controller: 'ProjectController',
     })
     .when('/submitProjects', {
-      templateUrl: 'app/map/map.html',
-      controller: 'MapController',
+      templateUrl: 'app/projects/projectSubmit.html',
+      controller: 'ProjectController',
       authenticate: true,
     })
     // .when('/testimonials', {
@@ -40,12 +44,12 @@ angular.module('drone', [
     //   authenticate: true,
     // })
     .when('/seekerProfile', {
-      templateUrl: 'app/profile/links.html',
+      templateUrl: 'app/users/seekers.html',
       controller: 'SeekerController',
       authenticate: true,
     })
     .when('/pilotProfile', {
-      templateUrl: 'app/shorten/shorten.html',
+      templateUrl: 'app/users/pilots.html',
       controller: 'PilotController',
       authenticate: true,
     })
