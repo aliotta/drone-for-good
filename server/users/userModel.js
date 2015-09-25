@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 
 
 var UserSchema = new mongoose.Schema({
-  // _id: Number,
+  _id: Number,
   email: {
     type: String,
     // required: true
