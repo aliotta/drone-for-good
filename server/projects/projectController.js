@@ -7,31 +7,46 @@ module.exports = {
 
   // Initializes new project with submitted data from user  
   newProject: function(req, res, next){
-    var project = {
-      location: req.body.location,
-      latitude: req.body.latitude,
-      longitude: req.body.longitude,
-      description: req.body.description,
-      expirationDate: req.body.expirationDate,
-      title: req.body.title,
-      seeker: req.body.seeker,
-      pilot: req.body.pilot
-    }
-
+    var title = req.body.title;
     // Permisifies with Q so we can use .then method rather than callbacks.
-    var createProject = Q.nbind(Project.create, Project);
+    var findOne = Q.nbind(Project.findOne, Project);
 
-    // invoke createProject with user data.
-    createProject(project)
+    findOne({title: title})
+      .then(function(project) {
+        if (project) {
+          next(new Error('Project name in use already!'));
+        } else {
+          // make a new user if not one
+          create = Q.nbind(Project.create, Project);
+          project = {
+            location: req.body.location,
+            latitude: req.body.latitude,
+            longitude: req.body.longitude,
+            description: req.body.description,
+            expirationDate: req.body.expirationDate,
+            title: req.body.title,
+            seeker: req.body.seeker,
+            pilot: req.body.pilot
+          }
+          return create(project);
+        }
+      })
       .then(function (createdProject) {
         if(createProject){
           // respond with json data of new user project.
           res.json(createdProject);
         }
       })
-      .fail(function (err) {
-        next(err);
-      });
+      .fail(function (error) {
+        next(error);
+      });    
+
+    // // invoke createProject with user data.
+    // createProject(project)
+    //   
+    //   .fail(function (err) {
+    //     next(err);
+    //   });
 
   },
 
