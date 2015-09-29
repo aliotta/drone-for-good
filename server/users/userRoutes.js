@@ -5,7 +5,9 @@ module.exports = function (app) {
   // app === userRouter injected from middlware.js
 
   app.post('/signin', userController.signin);
-  app.post('/signup', userController.signup);
+  app.post('/signup', function(req, res){
+    userController.signup(req)
+  });
   //TODO Make sure this naming convention works
   app.get('/signedin', userController.checkAuth);
 };
