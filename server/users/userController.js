@@ -53,7 +53,6 @@ module.exports = {
           // make a new user if not one
           create = Q.nbind(User.create, User);
           newUser = new User({
-            _id: 1, 
             username: username,
             password: password,
             email: email,
@@ -62,10 +61,7 @@ module.exports = {
             phoneNumber: phoneNumber,
             userType: userType
           });
-          console.log(newUser, " I AM NEW USER :D :D ");
-          console.log(create, " I am create function ", create(newUser));
           create(newUser, function (err, newUser) {
-            console.log(newUser, "IN THE CALLBACK LAND");
             if (err) return handleError(err);
           });
         }
