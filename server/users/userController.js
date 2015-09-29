@@ -46,12 +46,13 @@ module.exports = {
     // check to see if user already exists
     findOne({username: username})
       .then(function(user) {
+        console.log(user, " I AM USER, HEAR ME ROAR");
         if (user) {
           next(new Error('User already exist!'));
         } else {
           // make a new user if not one
           create = Q.nbind(User.create, User);
-          newUser = {
+          newUser = new User({
             username: username,
             password: password,
             email: email,
@@ -59,8 +60,10 @@ module.exports = {
             firstName: firstName,
             phoneNumber: phoneNumber,
             userType: userType
-          };
-          return create(newUser);
+          });
+          create(newUser, function (err, newUser) {
+            if (err) return handleError(err);
+          });
         }
       })
       .then(function (user) {
