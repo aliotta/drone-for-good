@@ -5,7 +5,7 @@ var Project = require('./projectsModel.js'),
 
 module.exports = {
 
-  // Initializes new project with submitted data from user  
+  // Initializes new project with submitted data from user
   newProject: function(req, res, next){
     var title = req.body.title;
     // Permisifies with Q so we can use .then method rather than callbacks.
@@ -13,12 +13,13 @@ module.exports = {
 
     findOne({title: title})
       .then(function(project) {
+        console.log(title, " I am a project title! PUT ME IN THE DATABASE, PLEASE :D");
         if (project) {
           next(new Error('Project name in use already!'));
         } else {
           // make a new user if not one
           create = Q.nbind(Project.create, Project);
-          project = {
+          project = new Project({
             location: req.body.location,
             latitude: req.body.latitude,
             longitude: req.body.longitude,
@@ -27,8 +28,11 @@ module.exports = {
             title: req.body.title,
             seeker: req.body.seeker,
             pilot: req.body.pilot
-          }
-          return create(project);
+          });
+          console.log(project, " project inside controller!!!!!!");
+          create(project, function(err, project){
+            if (err) return handleError(err);
+          });
         }
       })
       .then(function (createdProject) {
@@ -39,11 +43,11 @@ module.exports = {
       })
       .fail(function (error) {
         next(error);
-      });    
+      });
 
     // // invoke createProject with user data.
     // createProject(project)
-    //   
+    //
     //   .fail(function (err) {
     //     next(err);
     //   });

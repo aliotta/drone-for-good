@@ -52,7 +52,7 @@ module.exports = {
         } else {
           // make a new user if not one
           create = Q.nbind(User.create, User);
-          newUser = new User({
+          newUser = {
             username: username,
             password: password,
             email: email,
@@ -60,18 +60,17 @@ module.exports = {
             firstName: firstName,
             phoneNumber: phoneNumber,
             userType: userType
-          });
-          create(newUser, function (err, newUser) {
-            if (err) return handleError(err);
-          });
+          };
+          return create(newUser);
         }
       })
       .then(function (user) {
-        // create token to send back for auth
+        console.log(user, "<--user~~~~~~~~~~ inside second then ~~~~~~~~~~~");
         var token = jwt.encode(user, 'secret');
         res.json({token: token});
       })
       .fail(function (error) {
+        console.log('WHY AM I FAILING?? AM I FAILING??');
         next(error);
       });
   },
