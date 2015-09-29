@@ -6,13 +6,16 @@ module.exports = function (app) {
 
   //TODO Make sure this naming convention works
   app.post('/signin', function(req, res){
-    userController.signin(req);
+    userController.signin(req, res);
   });
   app.post('/signup', function(req, res){
     //console.log(req.body, " in userRoutes");
-    userController.signup(req);
+    userController.signup(req, res);
   });
   app.get('/signedin', function(req, res){
     userController.checkAuth();
   });
+  // app.get('/user:username', function(req, res){
+  //
+  // });
 };

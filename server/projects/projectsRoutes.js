@@ -15,9 +15,16 @@ module.exports = function (app) {
   // app.route('/openProjects')
   //   .get(projectController.);
 
-  app.post('/projects', projectsController.newProject);
-  app.get('/projects', projectsController.newProject);
-  app.get('/project:id', projectsController.findProject);
+  app.post('/api/projects', function(req, res){
+    console.log(req.body, " inside routes for projects long line help!");
+    projectsController.newProject(req);
+  });
+  app.get('/api/projects', function(req, res){
+    projectsController.newProject(req);
+  });
+  app.get('/api/project:id', function(req, res){
+    projectsController.findProject(req);
+  });
 
   // app.get('/:code', projectController.navToProject);
 
