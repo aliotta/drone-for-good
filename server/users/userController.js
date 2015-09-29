@@ -65,12 +65,10 @@ module.exports = {
         }
       })
       .then(function (user) {
-        console.log(user, "<--user~~~~~~~~~~ inside second then ~~~~~~~~~~~");
         var token = jwt.encode(user, 'secret');
         res.json({token: token});
       })
       .fail(function (error) {
-        console.log('WHY AM I FAILING?? AM I FAILING??');
         next(error);
       });
   },
