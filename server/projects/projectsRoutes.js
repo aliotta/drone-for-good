@@ -15,9 +15,10 @@ module.exports = function (app) {
   // app.route('/openProjects')
   //   .get(projectController.);
 
-  app.post('/api/projects', projectsController.newProject);
+  app.post('/projects', projectsController.newProject);
+  app.get('/projects', projectsController.newProject);
+  app.get('/project:id', projectsController.findProject);
 
- 
   // app.get('/:code', projectController.navToProject);
 
 };
