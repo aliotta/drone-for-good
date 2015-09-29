@@ -7,14 +7,15 @@ module.exports = {
 
   // Initializes new project with submitted data from user
   newProject: function(req, res, next){
+    console.log("JUST IN CASE D: D: D: D: ");
     var title = req.body.title;
     // Permisifies with Q so we can use .then method rather than callbacks.
     var findOne = Q.nbind(Project.findOne, Project);
 
     findOne({title: title})
       .then(function(project) {
-        console.log(title, " I am a project title! PUT ME IN THE DATABASE, PLEASE :D");
         if (project) {
+          console.log("in error block")
           next(new Error('Project name in use already!'));
         } else {
           // make a new user if not one
@@ -29,19 +30,17 @@ module.exports = {
             seeker: req.body.seeker,
             pilot: req.body.pilot
           });
-          console.log(project, " project inside controller!!!!!!");
-          create(project, function(err, project){
-            if (err) return handleError(err);
-          });
+          return create(project);
         }
       })
       .then(function (createdProject) {
-        if(createProject){
+        if(createdProject){
           // respond with json data of new user project.
           res.json(createdProject);
         }
       })
       .fail(function (error) {
+        console.log(error, " why are we failing? ");
         next(error);
       });
 

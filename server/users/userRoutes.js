@@ -13,9 +13,10 @@ module.exports = function (app) {
     userController.signup(req, res);
   });
   app.get('/signedin', function(req, res){
-    userController.checkAuth();
+    userController.checkAuth(req, res);
   });
-  // app.get('/user:username', function(req, res){
-  //
-  // });
+  app.get('/user:username', function(req, res){
+    console.log("Go to controller? Maybe?");
+    userController.getUser();
+  });
 };
