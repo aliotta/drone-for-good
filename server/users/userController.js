@@ -46,6 +46,7 @@ module.exports = {
     // check to see if user already exists
     findOne({username: username})
       .then(function(user) {
+        console.log(user, " I AM USER, HEAR ME ROAR");
         if (user) {
           next(new Error('User already exist!'));
         } else {
@@ -64,7 +65,6 @@ module.exports = {
         }
       })
       .then(function (user) {
-        // create token to send back for auth
         var token = jwt.encode(user, 'secret');
         res.json({token: token});
       })

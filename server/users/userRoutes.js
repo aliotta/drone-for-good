@@ -4,8 +4,18 @@ var userController = require('./userController.js');
 module.exports = function (app) {
   // app === userRouter injected from middlware.js
 
-  app.post('/signin', userController.signin);
-  app.post('/signup', userController.signup);
   //TODO Make sure this naming convention works
-  app.get('/signedin', userController.checkAuth);
+  app.post('/signin', function(req, res){
+    userController.signin(req, res);
+  });
+  app.post('/signup', function(req, res){
+    //console.log(req.body, " in userRoutes");
+    userController.signup(req, res);
+  });
+  app.get('/signedin', function(req, res){
+    userController.checkAuth();
+  });
+  // app.get('/user:username', function(req, res){
+  //
+  // });
 };

@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 
 
 var UserSchema = new mongoose.Schema({
-  _id: Number,
+  //_id: Number, //_id is not necessary; Mongo auto increments
   email: {
     type: String,
     // required: true
@@ -20,7 +20,7 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  
+
   location: {
     type: String,
     // required: true

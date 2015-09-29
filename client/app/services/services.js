@@ -29,7 +29,7 @@ angular.module('drone.services', [])
   var getProjects = function () {
     //get method
     return $http({
-      method: 'GET', 
+      method: 'GET',
       url: '/api/projects'
     })
     .then(function (resp) {
@@ -57,7 +57,7 @@ angular.module('drone.services', [])
   return {
     getProjects: getProjects,
     addProject: addProject
-  }; 
+  };
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
