@@ -59,12 +59,10 @@ module.exports = {
   },
 
   allProjects: function (req, res, next) {
-    console.log("~~~~~ Inside allProjects ~~~~~")
     var findAll = Q.nbind(Project.find, Project);
     // finds all projects in total.
     findAll({})
       .then(function (projects) {
-        console.log("~~~~~ will you return to us, dear project? ~~~~~")
         res.json(projects);
       })
       .fail(function (error) {

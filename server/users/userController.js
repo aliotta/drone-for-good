@@ -100,7 +100,7 @@ module.exports = {
 
   getUser: function(req, res, next, username) {
     //var username = req.body.username;
-    console.log(req.body,"~~~~~~~~~~~~~~~~~body~~~~~~~~~~~~");
+    console.log("~~~~~~~~~~~~~~~~~body~~~~~~~~~~~~");
     console.log(username, "~~~username~~~");
     var findUser = Q.nbind(User.findOne, User);
     findUser({username: username})

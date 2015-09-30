@@ -26,7 +26,7 @@ module.exports = function (app) {
     projectsController.allProjects(req, res);
   });
 
-  app.get('/project:id', function(req, res){
+  app.get('/:id', function(req, res){
     projectsController.findProject(req, res);
   });
 
