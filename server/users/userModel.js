@@ -5,7 +5,15 @@ var mongoose = require('mongoose'),
 
 
 var UserSchema = new mongoose.Schema({
+<<<<<<< HEAD
+<<<<<<< HEAD
+  //_id: Number,
+=======
   //_id: Number, //_id is not necessary; Mongo auto increments
+>>>>>>> d236959f17b5d880b21d220539f10f3813762d99
+=======
+  //_id: Number, //_id is not necessary; Mongo auto increments
+>>>>>>> d236959f17b5d880b21d220539f10f3813762d99
   email: {
     type: String,
     // required: true
