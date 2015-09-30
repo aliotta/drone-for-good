@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
     crypto   = require('crypto');
 
 var ProjectSchema = new mongoose.Schema({
-  _id: String,
+  //_id: String,
   location: String,
   latitude: Number,
   longitude: Number,

@@ -10,7 +10,7 @@ require('./config/middleware.js')(app, express);
 
 // export our app for testing and flexibility, required by index.js
 
-app.listen(8000);
+app.listen(3333);
 
 console.log("Listerning on port 8000");
 

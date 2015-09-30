@@ -30,7 +30,7 @@ module.exports = {
   },
 
   signup: function (req, res, next) {
-    console.log("there")
+    
     var username  = req.body.username,
         password  = req.body.password,
         email = req.body.email,
@@ -41,39 +41,42 @@ module.exports = {
         userType = req.body.userType,
         create,
         newUser;
-
+    console.log("there")
     var findOne = Q.nbind(User.findOne, User);
 
     // check to see if user already exists
     findOne({username: username})
-      .then(function(user) {
+      .then(function (user) {
+        console.log(user, "USEERRR")
         if (user) {
           next(new Error('User already exist!'));
         } else {
           // make a new user if not one
-          //create = Q.nbind(User.create, User);
-          newUser = new User({
-            _id: 1232,
-            username: "username",
-            password: "password",
-            email: "email",
-            location: "location",
-            firstName: "firstName",
-            phoneNumber: "phoneNumber",
-            userType: "userType"
-          });
+          create = Q.nbind(User.create, User);
+          newUser = {
+            username: username,
+            password: password,
+            email: email,
+            location: location,
+            firstName: firstName,
+            phoneNumber: phoneNumber,
+            userType: userType
+          };
           console.log("Before create:" , newUser)
-          return User.create(newUser, function(err, data){
-            console.log("DATA", data)
-            console.log(err);
-          });
+          return create(newUser)
+          
+
         }
       })
-      // .then(function (user) {
-      //   // create token to send back for auth
-      //   var token = jwt.encode(user, 'secret');
-      //   res.json({token: token});
-      // })
+      .then(function (user) {
+        console.log(user, "in second then")
+        // create token to send back for auth
+        var token = jwt.encode(user, 'secret');
+        res.json({token: token});
+        
+        //res.send("test")
+      }, function(){console.log("rejected Promise")})
+      
       .fail(function (error) {
         next(error);
       });
@@ -85,9 +88,11 @@ module.exports = {
     // then decode the token, which we end up being the user object
     // check to see if that user exists in the database
     var token = req.headers['x-access-token'];
+    console.log(token, "toknenenen")
     if (!token) {
       next(new Error('No token'));
     } else {
+      console.log("corrct path")
       var user = jwt.decode(token, 'secret');
       var findUser = Q.nbind(User.findOne, User);
       findUser({username: user.username})
