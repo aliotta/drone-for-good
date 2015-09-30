@@ -46,8 +46,13 @@ module.exports = {
 
     // check to see if user already exists
     findOne({username: username})
+<<<<<<< HEAD
       .then(function (user) {
         console.log(user, "USEERRR")
+=======
+      .then(function(user) {
+        console.log(user, " I AM USER, HEAR ME ROAR");
+>>>>>>> d236959f17b5d880b21d220539f10f3813762d99
         if (user) {
           next(new Error('User already exist!'));
         } else {
@@ -69,8 +74,11 @@ module.exports = {
         }
       })
       .then(function (user) {
+<<<<<<< HEAD
         console.log(user, "in second then")
         // create token to send back for auth
+=======
+>>>>>>> d236959f17b5d880b21d220539f10f3813762d99
         var token = jwt.encode(user, 'secret');
         res.json({token: token});
         
@@ -107,5 +115,18 @@ module.exports = {
           next(error);
         });
     }
+  },
+
+  getUser: function(req, res, next, username) {
+    console.log(username, "~~~username~~~");
+    var findUser = Q.nbind(User.findOne, User);
+    findUser({username: username})
+    .then(function(user) {
+      //return searched-for user, if successful
+      res.json(user);
+    })
+    .fail(function(err) {
+      next(err);
+    });
   }
 };

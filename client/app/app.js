@@ -3,8 +3,8 @@ angular.module('drone', [
   'drone.auth',
   'drone.map', 
   'drone.projects', 
-  'drone.pilots',
   'drone.seekers',
+  'drone.pilots',
   'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider) {
@@ -45,16 +45,16 @@ angular.module('drone', [
     // })
     .when('/seekerProfile', {
       templateUrl: 'app/users/seekers.html',
-      controller: 'SeekerController',
+      controller: 'SeekersController',
       authenticate: true,
     })
     .when('/pilotProfile', {
       templateUrl: 'app/users/pilots.html',
-      controller: 'PilotController',
+      controller: 'PilotsController',
       authenticate: true,
     })
     .otherwise({
-      redirectTo: '/map'
+      redirectTo: '/signin'
     });
     
     // We add our $httpInterceptor into the array

@@ -5,8 +5,9 @@ var Project = require('./projectsModel.js'),
 
 module.exports = {
 
-  // Initializes new project with submitted data from user  
+  // Initializes new project with submitted data from user
   newProject: function(req, res, next){
+    console.log("JUST IN CASE D: D: D: D: ");
     var title = req.body.title;
     // Permisifies with Q so we can use .then method rather than callbacks.
     var findOne = Q.nbind(Project.findOne, Project);
@@ -14,11 +15,12 @@ module.exports = {
     findOne({title: title})
       .then(function(project) {
         if (project) {
+          console.log("in error block")
           next(new Error('Project name in use already!'));
         } else {
           // make a new user if not one
           create = Q.nbind(Project.create, Project);
-          project = {
+          project = new Project({
             location: req.body.location,
             latitude: req.body.latitude,
             longitude: req.body.longitude,
@@ -27,27 +29,20 @@ module.exports = {
             title: req.body.title,
             seeker: req.body.seeker,
             pilot: req.body.pilot
-          }
+          });
           return create(project);
         }
       })
       .then(function (createdProject) {
-        if(createProject){
+        if(createdProject){
           // respond with json data of new user project.
           res.json(createdProject);
         }
       })
       .fail(function (error) {
+        console.log(error, " why are we failing? ");
         next(error);
-      });    
-
-    // // invoke createProject with user data.
-    // createProject(project)
-    //   
-    //   .fail(function (err) {
-    //     next(err);
-    //   });
-
+      });
   },
 
   // finds a unique project by ID.
