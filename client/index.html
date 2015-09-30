@@ -37,8 +37,8 @@
         { lat: 37.540574, lng: -122.437454}
       ];
 
-      //Set image url, and change orgin/anchor so flagpole
-      //bottom centered on marker coordinates
+      //Set image url for marker, and change orgin/anchor so 
+      //flagpole bottom centered on marker coordinates
       var image = {
         url: 'tiny_green_flag',
         //size: new google.maps.Size(20, 32),
@@ -46,41 +46,70 @@
         anchor: new google.maps.Point(0, 32)
       };
 
+      //Make content array for info window
+      var contentArray = [
+        '<p>A botanical survey of Golden Gate Park</p>',
+        '<p>Kristins magical cachement</p>',
+        '<p>Some other random survey</p>',
+        '<p>Tads SF Bay tide coverage</p>'
+      ];
+
+      //A function for creating a new info window.  
+      var makeInfoWindow = function (contentString) {
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString,
+          maxWidth: 200
+        });
+        return infowindow;
+      }
+
       //Function for adding markers to map object
-      function addMarker(location, map) {
+      function addMarker(location, map, infowindow) {
         var marker = new google.maps.Marker({
           position: location,
           map: map,
+          animation: google.maps.Animation.DROP,
           icon: image
         });
+        marker.addListener('click', function () {
+          infowindow.open(map, marker);
+        })
       };
 
       //Function which creates map object and appends map to the dom.
       function initialize() {
+        //Grab map element in DOM and specify options
         var mapCanvas = document.getElementById('map');
         var mapOptions = {
           center: new google.maps.LatLng(37.789, -122.416),
           zoom: 9,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          mapTypeId: google.maps.MapTypeId.HYBRID
         }
+        //Make new instance of google maps object
         var map = new google.maps.Map(mapCanvas, mapOptions)
+
+        //Attach all no fly zone geoJSON data 
         map.data.loadGeoJson('https://raw.githubusercontent.com/mapbox/drone-feedback/master/sources/geojson/5_mile_airport.geojson');
         map.data.loadGeoJson('https://raw.githubusercontent.com/mapbox/drone-feedback/master/sources/geojson/us_military.geojson');
         map.data.loadGeoJson('https://raw.githubusercontent.com/mapbox/drone-feedback/master/sources/geojson/us_national_park.geojson');
 
+        //Set main styles for no fly zone data
         map.data.setStyle({
           fillOpacity: .5,
           strokeWeight: 2,
           fillColor: 'red'
         });
 
-        //Iterate over testMarkers and add a marker for each one
+        //Iterate over testMarkers and add a marker for each one.
+        //Pass addMarker a latLng, map instance, and infowindow instance
         for (var i = 0; i < testMarkers.length; i++) {
           var location = testMarkers[i];
-          addMarker(location, map);
+          addMarker(location, map, makeInfoWindow(contentArray[i]) );
         }
+
       }
 
+      //When page loads, create the map
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
