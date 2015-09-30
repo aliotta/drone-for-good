@@ -11,6 +11,7 @@
     "expect.js": "^0.3.1"
   },
   "dependencies": {
+    "bower": "1.5.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
@@ -35,6 +36,7 @@
   },
   "scripts": {
     "start": "node server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "./node_modules/bower/bin/bower install"
   }
 }
