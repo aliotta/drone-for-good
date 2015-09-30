@@ -3,7 +3,9 @@ var mongoose    = require('mongoose');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/drone'); // connect to mongo database named drone
+mongoURI=process.env.CUSTOMERCONNSTR_MONGOLAB_URI || 'mongodb://localhost/drone';
+
+mongoose.connect(mongoURI); // connect to mongo database named drone
 
 // configure our server with all the middleware and and routing
 require('./config/middleware.js')(app, express);
