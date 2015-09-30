@@ -96,5 +96,20 @@ module.exports = {
           next(error);
         });
     }
+  },
+
+  getUser: function(req, res, next, username) {
+    //var username = req.body.username;
+    console.log(req.body,"~~~~~~~~~~~~~~~~~body~~~~~~~~~~~~");
+    console.log(username, "~~~username~~~");
+    var findUser = Q.nbind(User.findOne, User);
+    findUser({username: username})
+    .then(function(user) {
+      //return searched-for user, if successful
+      res.json(user);
+    })
+    .fail(function(err) {
+      next(err);
+    });
   }
 };
