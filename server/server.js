@@ -5,7 +5,6 @@ var app = express();
 var port = process.env.PORT || 3333;
 
 var mongoURI = process.env.CUSTOMCONNSTR_MONGOLAB_URI || 'mongodb://localhost/drone';
-mongoose.connect(mongoURI);
 
 mongoose.connect(mongoURI); // connect to mongo database named drone
 
