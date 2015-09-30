@@ -1,8 +1,8 @@
 {
   "name": "drone-for-good",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "",
-  "main": "client/app/app.js",
+  "main": "app.js",
   "author": "",
   "license": "ISC",
   "devDependencies": {
