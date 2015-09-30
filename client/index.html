@@ -29,11 +29,38 @@
     </div>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script>
+      //Marker coordinates
+      var testMarkers = [
+        { lat: 37.909884, lng: -122.574783}, 
+        { lat: 37.842677, lng: -122.116104},
+        { lat: 37.961874, lng: -122.223221},
+        { lat: 37.540574, lng: -122.437454}
+      ];
+
+      //Set image url, and change orgin/anchor so flagpole
+      //bottom centered on marker coordinates
+      var image = {
+        url: 'tiny_green_flag',
+        //size: new google.maps.Size(20, 32),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(0, 32)
+      };
+
+      //Function for adding markers to map object
+      function addMarker(location, map) {
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map,
+          icon: image
+        });
+      };
+
+      //Function which creates map object and appends map to the dom.
       function initialize() {
         var mapCanvas = document.getElementById('map');
         var mapOptions = {
           center: new google.maps.LatLng(37.789, -122.416),
-          zoom: 12,
+          zoom: 9,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         var map = new google.maps.Map(mapCanvas, mapOptions)
@@ -46,6 +73,12 @@
           strokeWeight: 2,
           fillColor: 'red'
         });
+
+        //Iterate over testMarkers and add a marker for each one
+        for (var i = 0; i < testMarkers.length; i++) {
+          var location = testMarkers[i];
+          addMarker(location, map);
+        }
       }
 
       google.maps.event.addDomListener(window, 'load', initialize);
