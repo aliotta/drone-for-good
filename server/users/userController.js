@@ -30,6 +30,7 @@ module.exports = {
   },
 
   signup: function (req, res, next) {
+
     var username  = req.body.username,
         password  = req.body.password,
         email = req.body.email,
@@ -40,7 +41,7 @@ module.exports = {
         userType = req.body.userType,
         create,
         newUser;
-
+    console.log("there")
     var findOne = Q.nbind(User.findOne, User);
 
     // check to see if user already exists
@@ -61,13 +62,15 @@ module.exports = {
             phoneNumber: phoneNumber,
             userType: userType
           };
-          return create(newUser);
+          //console.log("Before create:" , newUser)
+          return create(newUser)
         }
       })
       .then(function (user) {
+        // create token to send back for auth
         var token = jwt.encode(user, 'secret');
         res.json({token: token});
-      })
+      }, function(){console.log("rejected Promise")})
       .fail(function (error) {
         next(error);
       });
@@ -79,9 +82,11 @@ module.exports = {
     // then decode the token, which we end up being the user object
     // check to see if that user exists in the database
     var token = req.headers['x-access-token'];
+    console.log(token, "toknenenen")
     if (!token) {
       next(new Error('No token'));
     } else {
+      console.log("corrct path")
       var user = jwt.decode(token, 'secret');
       var findUser = Q.nbind(User.findOne, User);
       findUser({username: user.username})

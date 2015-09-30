@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 
 var ProjectSchema = new mongoose.Schema({
-  //_id: String, //_id breaks all the things!
   location: String,
   latitude: Number,
   longitude: Number,
