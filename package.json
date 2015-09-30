@@ -29,7 +29,8 @@
       "heroku"
   ],
   "engines": {
-      "node": "0.12.x"
+      "node": "0.12.x",
+      "npm": "2.1.x"
   },
   "scripts": {
     "start": "node server/server.js",
