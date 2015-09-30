@@ -43,14 +43,6 @@ module.exports = {
         console.log(error, " why are we failing? ");
         next(error);
       });
-
-    // // invoke createProject with user data.
-    // createProject(project)
-    //
-    //   .fail(function (err) {
-    //     next(err);
-    //   });
-
   },
 
   // finds a unique project by ID.

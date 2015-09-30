@@ -15,8 +15,9 @@ module.exports = function (app) {
   app.get('/signedin', function(req, res){
     userController.checkAuth(req, res);
   });
-  app.get('/user:username', function(req, res){
-    console.log("Go to controller? Maybe?");
-    userController.getUser();
+  app.get('/:username', function(req, res){
+    // console.log(req.url.slice(0), "~~~~~~~~~~~~~~~~~req.url.slice(0)~~");
+    // console.log(req.url, "~~~~~~req.url~~~~~~~~");
+    userController.getUser(req, res, null, req.url.slice(1));
   });
 };

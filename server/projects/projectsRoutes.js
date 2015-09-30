@@ -19,16 +19,15 @@ module.exports = function (app) {
 //If we have "/projects" here, then we have "/projects/projects" in Paws for this to show up.
 //Routes are injected in middleware.js
   app.post('/', function(req, res){
-    console.log(" inside routes for projects long line help!");
     projectsController.newProject(req, res);
-  });
-  app.get('/', function(req, res){
-    projectsController.newProject(req, res);
-  });
-  app.get('/project:id', function(req, res){
-    projectsController.findProject(req, res);
   });
 
-  // app.get('/:code', projectController.navToProject);
+  app.get('/', function(req, res){
+    projectsController.allProjects(req, res);
+  });
+
+  app.get('/:id', function(req, res){
+    projectsController.findProject(req, res);
+  });
 
 };
