@@ -2,6 +2,8 @@ var express     = require('express');
 var mongoose    = require('mongoose');
 
 var app = express();
+var port = process.env.PORT || 3333;
+console.log(port);
 
 var mongoURI=process.env.MONGOLAB_URI || 'mongodb://localhost/drone';
 console.log(mongoURI);
@@ -11,12 +13,10 @@ mongoose.connect(mongoURI); // connect to mongo database named drone
 require('./config/middleware.js')(app, express);
 
 // export our app for testing and flexibility, required by index.js
-var port = process.env.PORT || 8000
-
 app.listen(port);
 
 
-console.log("Listerning on port: ", port);
+console.log("Listening on port: ", port);
 
 module.exports = app;
 
