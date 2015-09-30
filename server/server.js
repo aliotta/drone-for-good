@@ -9,8 +9,9 @@ mongoose.connect('mongodb://localhost/drone'); // connect to mongo database name
 require('./config/middleware.js')(app, express);
 
 // export our app for testing and flexibility, required by index.js
+var port = process.env.PORT || 8000
 
-app.listen(8000);
+app.listen(port);
 
 console.log("Listerning on port 8000");
 
