@@ -1,8 +1,8 @@
 {
   "name": "drone-for-good",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "client/app/app.js",
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -23,5 +23,16 @@
     "passport-local": "^1.0.0",
     "q": "^1.0.1",
     "request": "^2.36.0"
+  },
+  "keywords": [
+      "example",
+      "heroku"
+  ],
+  "engines": {
+      "node": "0.10.x"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
