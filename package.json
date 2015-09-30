@@ -26,17 +26,9 @@
     "q": "^1.0.1",
     "request": "^2.36.0"
   },
-  "keywords": [
-    "example",
-    "heroku"
-  ],
-  "engines": {
-    "node": "0.12.x",
-    "npm": "2.1.x"
-  },
   "scripts": {
     "start": "node server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "postinstall": "./node_modules/bower/bin/bower install",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
