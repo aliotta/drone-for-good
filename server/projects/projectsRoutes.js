@@ -14,11 +14,14 @@ module.exports = function (app) {
   app.get('/projects', projectsController.allProjects);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   app.post('/projects', projectsController.newProject);
 
  
   // app.get('/:code', projectController.navToProject);
 =======
+=======
+>>>>>>> d236959f17b5d880b21d220539f10f3813762d99
   // app.route('/openProjects')
   //   .get(projectController.);
 
@@ -36,6 +39,9 @@ module.exports = function (app) {
   app.get('/:id', function(req, res){
     projectsController.findProject(req, res);
   });
+<<<<<<< HEAD
+>>>>>>> d236959f17b5d880b21d220539f10f3813762d99
+=======
 >>>>>>> d236959f17b5d880b21d220539f10f3813762d99
 
 };

@@ -52,6 +52,9 @@ module.exports = {
 =======
       .then(function(user) {
         console.log(user, " I AM USER, HEAR ME ROAR");
+<<<<<<< HEAD
+>>>>>>> d236959f17b5d880b21d220539f10f3813762d99
+=======
 >>>>>>> d236959f17b5d880b21d220539f10f3813762d99
         if (user) {
           next(new Error('User already exist!'));
@@ -75,8 +78,11 @@ module.exports = {
       })
       .then(function (user) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         console.log(user, "in second then")
         // create token to send back for auth
+=======
+>>>>>>> d236959f17b5d880b21d220539f10f3813762d99
 =======
 >>>>>>> d236959f17b5d880b21d220539f10f3813762d99
         var token = jwt.encode(user, 'secret');

@@ -2,7 +2,11 @@ var mongoose = require('mongoose');
 
 var ProjectSchema = new mongoose.Schema({
 <<<<<<< HEAD
+<<<<<<< HEAD
   //_id: String,
+=======
+  //_id: String, //_id breaks all the things!
+>>>>>>> d236959f17b5d880b21d220539f10f3813762d99
 =======
   //_id: String, //_id breaks all the things!
 >>>>>>> d236959f17b5d880b21d220539f10f3813762d99
