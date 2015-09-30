@@ -11,9 +11,8 @@ module.exports = function (app) {
   // app.param('code', linksController.findUrl);
 
 
-
-  // app.route('/openProjects')
-  //   .get(projectController.);
+  app.get('/projects', projectsController.allProjects);
+  app.post('/projects', projectsController.newProject);
 
 //the routes here build off of the routes defined in services.js in the client side.
 //If we have "/projects" here, then we have "/projects/projects" in Paws for this to show up.
