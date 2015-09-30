@@ -13,7 +13,7 @@ var port = process.env.PORT || 8000
 
 app.listen(port);
 
-console.log("Listerning on port 8000");
+console.log("Listerning on port: ", port);
 
 module.exports = app;
 
