@@ -18,6 +18,6 @@ module.exports = function (app) {
   app.get('/:username', function(req, res){
     console.log(req.url.slice(0), "~~~~~~~~~~~~~~~~~req.url.slice(0)~~");
     console.log(req.url, "~~~~~~req.url~~~~~~~~");
-    userController.getUser(req.url.slice(0), res);
+    userController.getUser(req, res, null, req.url.slice(1));
   });
 };
