@@ -6,7 +6,7 @@ var port = process.env.PORT || 3333;
 
 var mongoURI = process.env.CUSTOMCONNSTR_MONGOLAB_URI || 'mongodb://localhost/drone';
 
-mongoose.connect(mongoURI); // connect to mongo database named drone
+mongoose.createConnection(mongoURI); // connect to mongo database named drone
 
 // configure our server with all the middleware and and routing
 require('./config/middleware.js')(app, express);
