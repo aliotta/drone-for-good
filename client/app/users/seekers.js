@@ -1,5 +1,3 @@
-
-
 angular.module('drone.seekers', [])
 
 .controller('SeekersController', function ($scope, $location, UserFactory) {
@@ -18,5 +16,5 @@ angular.module('drone.seekers', [])
       });
   }
 
-  $scope.getProfile();
+  // $scope.getProfile();
   });
