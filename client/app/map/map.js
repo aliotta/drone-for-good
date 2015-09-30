@@ -1,7 +1,10 @@
 angular.module('drone.map', [])
 
-.controller('MapController', function ($scope, $location) {
+.controller('MapController', function ($scope, $location, ProjectFactory) {
   //Get project data
+  $scope.data = {};
+  $scope.locations = [];
+  $scope.descriptions = [];
 
   //Initialize map object and add to dom
   $scope.initialize = function () {
@@ -34,7 +37,21 @@ angular.module('drone.map', [])
         //   addMarker(location, map, makeInfoWindow(contentArray[i]) );
         // }
 
+  }
+  $scope.getProjects = function() {
+    ProjectFactory.getProjects();
+    .then(function (projectData) {
+      for (var i = 0; i < projectData.length; i++) {
+        var currentEntry = projectData[i];
+        $scope.locations[i] = {
+          lat: currentEntry.latitude, 
+          lng: currentEntry.longitude
+        };
+        $scope.descriptions[i] = '<p>' + currentEntry.description + '</p>'
       }
+    });
+
+  }
 
       //When page loads, create the map
       google.maps.event.addDomListener(window, 'load', $scope.initialize);
