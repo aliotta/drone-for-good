@@ -43,14 +43,6 @@ module.exports = {
         console.log(error, " why are we failing? ");
         next(error);
       });
-
-    // // invoke createProject with user data.
-    // createProject(project)
-    //
-    //   .fail(function (err) {
-    //     next(err);
-    //   });
-
   },
 
   // finds a unique project by ID.
@@ -67,10 +59,12 @@ module.exports = {
   },
 
   allProjects: function (req, res, next) {
+    console.log("~~~~~ Inside allProjects ~~~~~")
     var findAll = Q.nbind(Project.find, Project);
     // finds all projects in total.
     findAll({})
       .then(function (projects) {
+        console.log("~~~~~ will you return to us, dear project? ~~~~~")
         res.json(projects);
       })
       .fail(function (error) {
