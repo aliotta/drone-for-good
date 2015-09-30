@@ -3,7 +3,7 @@ var mongoose    = require('mongoose');
 
 var app = express();
 
-mongoURI=process.env.CUSTOMERCONNSTR_MONGOLAB_URI || 'mongodb://localhost/drone';
+var mongoURI=process.env.CUSTOMERCONNSTR_MONGOLAB_URI || 'mongodb://localhost/drone';
 
 mongoose.connect(mongoURI); // connect to mongo database named drone
 
