@@ -3,8 +3,8 @@ var mongoose    = require('mongoose');
 
 var app = express();
 
-var mongoURI=process.env.CUSTOMERCONNSTR_MONGOLAB_URI || 'mongodb://localhost/drone';
-
+var mongoURI=process.env.MONGOLAB_URI || 'mongodb://localhost/drone';
+console.log(mongoURI);
 mongoose.connect(mongoURI); // connect to mongo database named drone
 
 // configure our server with all the middleware and and routing
@@ -14,6 +14,7 @@ require('./config/middleware.js')(app, express);
 var port = process.env.PORT || 8000
 
 app.listen(port);
+
 
 console.log("Listerning on port: ", port);
 
