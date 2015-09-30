@@ -1,20 +1,20 @@
 angular.module('drone.pilots', [])
 
-.controller('PilotController', function ($scope, $location, UserFactory) {
-  
+.controller('PilotsController', function ($scope, $location, UserFactory) {
+  //Make a pilot object a property of the scope
+  $scope.pilot = {};
 
-  $scope.link = {};
-  //query the database to return all pilots in the database. Return based on SOME criteria
-
-  $scope.addLink = function () {
-    $scope.loading = true;
-    Links.addLink($scope.link)
-      .then(function () {
-        $scope.loading = false;
-        $location.path('/');
+  //A method for making an api call to populate pilot object with relevant properties
+  $scope.getProfile = function () {
+    UserFactory.getProfile()
+      .then(function (profile) {
+        $scope.pilot = profile; 
       })
       .catch(function (error) {
         console.log(error);
       });
-  };
+  }
+
+  $scope.getProfile();
+
   });

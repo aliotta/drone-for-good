@@ -1,18 +1,22 @@
+
+
 angular.module('drone.seekers', [])
 
-.controller('SeekerController', function ($scope, $location, userFactory) {
-  // Your code here
+.controller('SeekersController', function ($scope, $location, UserFactory) {
+  //Make a seeker object a property of the scope
+  $scope.seeker = {};
 
-  $scope.link = {};
-  $scope.addLink = function () {
-    $scope.loading = true;
-    Links.addLink($scope.link)
-      .then(function () {
-        $scope.loading = false;
-        $location.path('/');
+  //A method that makes an api call to fill the seeker object with the relevant
+  //properties
+  $scope.getProfile = function () {
+    UserFactory.getProfile()
+      .then(function (profile) {
+        $scope.seeker = profile; 
       })
       .catch(function (error) {
         console.log(error);
       });
-  };
+  }
+
+  $scope.getProfile();
   });

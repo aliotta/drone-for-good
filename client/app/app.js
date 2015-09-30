@@ -3,8 +3,7 @@ angular.module('drone', [
   'drone.auth',
   'drone.map', 
   'drone.projects', 
-  'drone.pilots',
-  'drone.seekers',
+  'drone.users',
   'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider) {
