@@ -13,6 +13,10 @@ angular.module('drone', [
       templateUrl: 'app/auth/signin.html',
       controller: 'AuthController'
     })
+    .when('/about', {
+      templateUrl: 'app/about/about.html',
+      // controller: 'ProjectController',
+    })
     //for signing in and signing up
     .when('/signup', {
       templateUrl: 'app/auth/signup.html',
