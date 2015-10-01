@@ -30,4 +30,8 @@ angular.module('drone.auth', [])
         console.error(error);
       });
   };
+
+  $scope.logout = function () {
+    Auth.signout()
+  }
 });
