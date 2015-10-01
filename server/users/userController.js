@@ -41,13 +41,13 @@ module.exports = {
         userType = req.body.userType,
         create,
         newUser;
-    console.log("there")
     var findOne = Q.nbind(User.findOne, User);
+    console.log("there", username, " ", findOne)
 
     // check to see if user already exists
     findOne({username: username})
       .then(function(user) {
-        console.log(user, " I AM USER, HEAR ME ROAR");
+        console.log(" I AM USER, HEAR ME ROAR", user);
         if (user) {
           next(new Error('User already exist!'));
         } else {
@@ -62,7 +62,7 @@ module.exports = {
             phoneNumber: phoneNumber,
             userType: userType
           };
-          //console.log("Before create:" , newUser)
+          console.log("Before create:" , newUser)
           return create(newUser)
         }
       })

@@ -79,12 +79,14 @@ angular.module('drone.services', [])
   };
 
   var signup = function (user) {
+    console.log(user, " USER")
     return $http({
       method: 'POST',
       url: '/api/users/signup',
       data: user
     })
     .then(function (resp) {
+      console.log(resp, " RESP")
       return resp.data.token;
     });
   };
