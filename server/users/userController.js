@@ -41,8 +41,9 @@ module.exports = {
         userType = req.body.userType,
         create,
         newUser;
-    console.log("there")
+    console.log("In userController.js~~~~~~~~~~~", username);
     var findOne = Q.nbind(User.findOne, User);
+
 
     // check to see if user already exists
     findOne({username: username})
@@ -82,7 +83,7 @@ module.exports = {
     // then decode the token, which we end up being the user object
     // check to see if that user exists in the database
     var token = req.headers['x-access-token'];
-    console.log(token, "toknenenen")
+    console.log(token, ": is our token");
     if (!token) {
       next(new Error('No token'));
     } else {
