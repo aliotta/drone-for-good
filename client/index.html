@@ -13,8 +13,7 @@
       <h1>Drones for Good</h1>      
       <div class="nav-items">
         <a class="selected" href="#/home">Map</a>
-        <a href="#/pilotProfile">Pilots</a>
-        <a href="#/seekerProfile">Seekers</a>
+        <a href="#/userProfile">Profile</a>
         <a href="#/projects">All Projects</a> 
         <a href="#/submitProjects">Create a Project</a> 
         <a ng-controller="AuthController" ng-click="logout()" href="#/logout">Logout</a>   
@@ -24,7 +23,7 @@
       
 
       <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
-      <div ng-view></div>
+      <div class="content" ng-view></div>
 
       <div ng-controller="MapController" id="map"></div>
 
@@ -87,8 +86,7 @@
     <script src="app/auth/auth.js"></script>
     <script src="app/projects/projects.js"></script>
     <script src="app/map/map.js"></script>
-    <script src="app/users/seekers.js"></script>
-    <script src="app/users/pilots.js"></script>
+    <script src="app/users/users.js"></script>
     <script src="app/services/services.js"></script>
     <script src="app/app.js"></script>
   </body>

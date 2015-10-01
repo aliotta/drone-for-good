@@ -3,21 +3,15 @@ angular.module('drone.services', [])
 
 //Map Factory
 .factory('MapFactory', function ($http) {
-  //get layer
-
-  // get project from pin click
-
-  // post project from pin drop
 
 })
 .factory('UserFactory', function ($http, $window) {
   //get all users function
   console.log("what do you mean")
   var getUser = function (username) {
-    //console.log("working?", $window.localStorage["com.drone.username"])
     return $http({
       method: 'GET',
-      url: '/api/users/' + username//+ $window.localStorage["com.drone.username"] 
+      url: '/api/users/' + username
     })
     .then(function (resp) {
       return resp.data;

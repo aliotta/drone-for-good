@@ -3,8 +3,7 @@ angular.module('drone', [
   'drone.auth',
   'drone.map', 
   'drone.projects', 
-  'drone.seekers',
-  'drone.pilots',
+  'drone.users',
   'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider) {
@@ -43,14 +42,10 @@ angular.module('drone', [
     //   controller: 'AboutController',
     //   authenticate: true,
     // })
-    .when('/seekerProfile', {
-      templateUrl: 'app/users/seekers.html',
-      controller: 'SeekersController',
-      authenticate: true,
-    })
-    .when('/pilotProfile', {
-      templateUrl: 'app/users/pilots.html',
-      controller: 'PilotsController',
+  
+    .when('/userProfile', {
+      templateUrl: 'app/users/users.html',
+      controller: 'UsersController',
       authenticate: true,
     })
     .otherwise({
