@@ -30,7 +30,7 @@ module.exports = {
   },
 
   signup: function (req, res, next) {
-
+    console.log("~~~~~are you a seeker?~~~~~", req.body);
     var username  = req.body.username,
         password  = req.body.password,
         email = req.body.email,
@@ -38,7 +38,7 @@ module.exports = {
         firstName = req.body.firstName,
         lastName = req.body.lastName,
         phoneNumber = req.body.phoneNumber,
-        userType = req.body.type,
+        userType = req.body.userType,
         create,
         newUser;
     var findOne = Q.nbind(User.findOne, User);
