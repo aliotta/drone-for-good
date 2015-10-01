@@ -7,11 +7,12 @@ angular.module('drone.auth', [])
   $scope.user = {};
 
   $scope.signin = function () {
+
     Auth.signin($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.drone', token);
         $window.localStorage.setItem('com.drone.username', $scope.user.username);
-        $location.path('/map');
+        $location.path('/projects');
       })
       .catch(function (error) {
         console.error(error);
@@ -23,7 +24,7 @@ angular.module('drone.auth', [])
       .then(function (token) {
         $window.localStorage.setItem('com.drone', token);
         $window.localStorage.setItem('com.drone.username', $scope.user.username);
-        $location.path('/map');
+        $location.path('/projects');
       })
       .catch(function (error) {
         console.error(error, " in auth.js error");
