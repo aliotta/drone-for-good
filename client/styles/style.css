@@ -1,7 +1,8 @@
 /***********************
 *******  LAYOUT  *******
 ************************/
-
+/*top level body, split into title/naviagtion
+and main body*/
 body {
   width: 100%;
   height: 100vh;
@@ -9,7 +10,7 @@ body {
   flex-direction: column;
 }
 
-
+/*Where the title and nav items live*/
 .navigation {
   flex-grow: 1;
   width: 100%;
@@ -33,18 +34,18 @@ body {
 }
 
 .main-body {
+  width: screen.width;
   flex-grow: 15;
   display: flex;
   flex-direction: row;
 }
 
-.main-body:first-child {
-  width: 100%;
+.content {
+  width: 9%;
   flex-grow: 1;
 }
 
 #map {
-  /*width: 100%;*/
   flex-grow: 5;
 }
 
