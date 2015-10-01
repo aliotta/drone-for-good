@@ -38,7 +38,7 @@ module.exports = {
         firstName = req.body.firstName,
         lastName = req.body.lastName,
         phoneNumber = req.body.phoneNumber,
-        userType = req.body.userType,
+        userType = req.body.type,
         create,
         newUser;
     var findOne = Q.nbind(User.findOne, User);
@@ -57,6 +57,7 @@ module.exports = {
             email: email,
             location: location,
             firstName: firstName,
+            lastName: lastName,
             phoneNumber: phoneNumber,
             userType: userType
           };
