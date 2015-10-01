@@ -10,17 +10,23 @@ angular.module('drone.services', [])
   // post project from pin drop
 
 })
-.factory('UserFactory', function ($http) {
+.factory('UserFactory', function ($http, $window) {
   //get all users function
-  var getUser = function () {
+  console.log("what do you mean")
+  var getUser = function (username) {
+    //console.log("working?", $window.localStorage["com.drone.username"])
     return $http({
       method: 'GET',
-      url: '/api/user'
+      url: '/api/users/' + username//+ $window.localStorage["com.drone.username"] 
     })
     .then(function (resp) {
       return resp.data;
     });
   }
+
+  return {
+    getUser: getUser
+  };
 
 })
 .factory('ProjectFactory', function ($http) {
