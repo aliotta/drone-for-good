@@ -13,7 +13,6 @@ angular.module('drone.services', [])
 .factory('UserFactory', function ($http) {
   //get all users function
   var getUser = function () {
-    console.log("~~~~~~~Am I getting here?~~~~~~~");
     return $http({
       method: 'GET',
       url: '/api/user'
@@ -80,14 +79,12 @@ angular.module('drone.services', [])
   };
 
   var signup = function (user) {
-    console.log("~~~~~~~inside service.js signup fxn~~~~~~~");
     return $http({
       method: 'POST',
       url: '/api/users/signup',
       data: user
     })
     .then(function (resp) {
-      console.log("~~~~~~signup not getting here??~~~~~~~")
       return resp.data.token;
     });
   };
