@@ -7,7 +7,7 @@ angular.module('drone.seekers', [])
   //A method that makes an api call to fill the seeker object with the relevant
   //properties
   $scope.getProfile = function () {
-    UserFactory.getProfile()
+    UserFactory.getUser()
       .then(function (profile) {
         $scope.seeker = profile; 
       })

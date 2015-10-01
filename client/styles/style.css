@@ -133,6 +133,16 @@ body {
 
 }
 
+a:hover {
+  color: white;
+}
 
 
+td {
+  text-align: center;
+  wrod-wrap: break-word;
+}
 
+.project-header {
+  font-weight: 800;
+}
