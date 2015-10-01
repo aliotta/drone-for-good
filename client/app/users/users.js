@@ -1,6 +1,6 @@
-angular.module('drone.pilots', [])
+angular.module('drone.users', [])
 
-.controller('PilotsController', function ($scope, $location, UserFactory, $window) {
+.controller('UsersController', function ($scope, $location, UserFactory, $window) {
   //Make a pilot object a property of the scope
   $scope.pilot = {};
 

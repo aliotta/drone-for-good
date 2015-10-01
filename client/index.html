@@ -14,11 +14,11 @@
       <div class="nav-items">
         <a href="#/home">Map</a>
         <a href="#/about">About</a>
-        <a href="#/pilotProfile">Pilots</a>
-        <a href="#/seekerProfile">Seekers</a>
+        <a href="#/userProfile">Profile</a>
         <a href="#/projects">All Projects</a>
         <a href="#/submitProjects">Create a Project</a>
         <a ng-controller="AuthController" ng-click="logout()" href="#/logout">Logout</a>
+        <a class="selected" href="#/home">Map</a>
       </div>
     </nav>
     <div class="main-body">
@@ -89,8 +89,7 @@
     <script src="app/auth/auth.js"></script>
     <script src="app/projects/projects.js"></script>
     <script src="app/map/map.js"></script>
-    <script src="app/users/seekers.js"></script>
-    <script src="app/users/pilots.js"></script>
+    <script src="app/users/users.js"></script>
     <script src="app/services/services.js"></script>
     <script src="app/app.js"></script>
   </body>
