@@ -98,7 +98,6 @@ angular.module('drone.services', [])
     $location.path('/signin');
   };
 
-
   return {
     signin: signin,
     signup: signup,
