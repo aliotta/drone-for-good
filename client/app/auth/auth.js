@@ -27,7 +27,7 @@ angular.module('drone.auth', [])
         $location.path('/projects');
       })
       .catch(function (error) {
-        console.error(error);
+        console.error(error, " in auth.js error");
       });
   };
 
