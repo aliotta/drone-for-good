@@ -97,6 +97,7 @@ angular.module('drone.services', [])
 
   var signout = function () {
     $window.localStorage.removeItem('com.drone');
+    $window.localStorage.removeItem('com.drone.username');
     $location.path('/signin');
   };
 
