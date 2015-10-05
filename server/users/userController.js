@@ -37,7 +37,7 @@ module.exports = {
         location = req.body.location,
         firstName = req.body.firstName,
         lastName = req.body.lastName,
-        phoneNumber = req.body.phoneNumber,
+        emailAddress = req.body.emailAddress,
         userType = req.body.userType,
         create,
         newUser;
