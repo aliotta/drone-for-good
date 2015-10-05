@@ -13,8 +13,7 @@ angular.module('drone.projects', [])
     project.username = username;
     ProjectFactory.addProject(project)
       .then(function () {
-        // $scope.loading = false;
-        // $location.path('/');
+        //just because ...?
       })
       .catch(function (error) {
         console.log(error);

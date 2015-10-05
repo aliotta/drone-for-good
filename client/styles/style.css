@@ -75,22 +75,34 @@ body {
 #signup form *, #signin form *{
   flex-grow: 1;
   margin-top: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-#open-projects table {
-  display: flex;
+#open-projects .table {
+  /*display: flex;*/
   flex-direction: column;
-
+  margin-left: 2%;
+  overflow-y: scroll;
+  table-layout: fixed;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break:break-word;
 }
 
-#open-projects thead {
-  flex-grow: 1;
+#open-projects .project-header td {
+  /*flex-grow: 1;*/
+  font-size: 20px;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  text-align: center;
 }
 
-#open-projects tbody {
-  flex-grow: 3;
+#open-projects .project-data td {
+  /*flex-grow: 1;*/
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 5px;
 }
 
 /***********************
@@ -141,7 +153,6 @@ a:hover {
 
 td {
   text-align: center;
-  wrod-wrap: break-word;
 }
 
 .project-header {
