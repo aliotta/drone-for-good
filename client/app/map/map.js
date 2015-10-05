@@ -16,57 +16,6 @@ angular.module('drone.map', [])
   };
 
   //A method to get project data from project factory, and populate
-  //scope properties with coordinates and descriptions.
-  $scope.getProjects = function() {
-    ProjectFactory.getProjects()
-    .then(function (projectData) {
-      for (var i = 0; i < projectData.length; i++) {
-        var currentEntry = projectData[i];
-        $scope.locations[i] = {
-          lat: currentEntry.latitude, 
-          lng: currentEntry.longitude
-        };
-        $scope.descriptions[i] = '<p>' + currentEntry.description + '</p>'
-      }
-    });
-  };
-
-  //Invoke getProjects to populate our locations and descriptions arrays
-  $scope.getProjects();
-
-  //A function for creating a new info window.  
-  $scope.makeInfoWindow = function (contentString) {
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString,
-      maxWidth: 200
-    });
-    return infowindow;
-  }
-
-  //Function for adding markers to map object
-  $scope.addMarker = function (location, map, infowindow) {
-    var marker = new google.maps.Marker({
-      position: location,
-      map: map,
-      animation: google.maps.Animation.DROP,
-      icon: image
-    });
-    marker.addListener('click', function () {
-      infowindow.open(map, marker);
-    })
-  };
-
-  //TEST CODE for updating markers when new project submitted
-  $scope.updateMarker = function() {
-    $scope.getProjects();
-    var newLocation = $scope.locations[$scope.locations.length-1];
-    var newDescription = $scope.descriptions[$scope.descriptions.length-1];
-    $scope.addMarker(newLocation, map, $scope.makeInfoWindow(newDescription));
-  }
-
-
-
-
   //Initialize map object and add to dom
   $scope.initialize = function () {
         //Grab map element in DOM and specify options
@@ -100,8 +49,79 @@ angular.module('drone.map', [])
 
   }
 
+  //scope properties with coordinates and descriptions.
+  $scope.getProjects = function() {
+    ProjectFactory.getProjects()
+    .then(function (projectData) {
+      for (var i = 0; i < projectData.length; i++) {
+        var currentEntry = projectData[i];
+        $scope.locations[i] = {
+          lat: currentEntry.latitude, 
+          lng: currentEntry.longitude
+        };
+        $scope.descriptions[i] = '<p>' + currentEntry.description + '</p>'
+      }
+    })
+    .then(function () {
+      $scope.initialize()
+    });
+  };
+
+  //Invoke getProjects to populate our locations and descriptions arrays
+  //$scope.getProjects();
+
+  //A function for creating a new info window.  
+  $scope.makeInfoWindow = function (contentString) {
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString,
+      maxWidth: 200
+    });
+    return infowindow;
+  }
+
+  //Function for adding markers to map object
+  $scope.addMarker = function (location, map, infowindow) {
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map,
+      animation: google.maps.Animation.DROP,
+      icon: image
+    });
+    marker.addListener('click', function () {
+      infowindow.open(map, marker);
+    })
+  };
+
+  //Function for updating markers when new project submitted
+  $scope.updateMarker = function(project) {
+    ProjectFactory.addProject(project)
+    .then(function () {
+    ProjectFactory.getProjects()
+    .then(function (projects) {
+      var currentEntry = projects[projects.length-1];
+      var newLocation = {
+          lat: currentEntry.latitude, 
+          lng: currentEntry.longitude
+      };
+      var newDescription = '<p>' + currentEntry.description + '</p>';
+      $scope.addMarker(newLocation, map, $scope.makeInfoWindow(newDescription));
+    })  
+    })
+
+    // $scope.getProjects()
+    // .then(function () {
+    //   var newLocation = $scope.locations[$scope.locations.length-1];
+    //   var newDescription = $scope.descriptions[$scope.descriptions.length-1];
+    //   $scope.addMarker(newLocation, map, $scope.makeInfoWindow(newDescription));
+    // });
+  };
+
+
+
+
+
   //When page loads, create the map
-  google.maps.event.addDomListener(window, 'load', $scope.initialize);
+  google.maps.event.addDomListener(window, 'load', $scope.getProjects);
 });
 
 
