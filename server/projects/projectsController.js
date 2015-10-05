@@ -7,7 +7,6 @@ module.exports = {
 
   // Initializes new project with submitted data from user
   newProject: function(req, res, next){
-    console.log("JUST IN CASE D: D: D: D: ");
     var title = req.body.title;
     // Permisifies with Q so we can use .then method rather than callbacks.
     var findOne = Q.nbind(Project.findOne, Project);
@@ -35,12 +34,13 @@ module.exports = {
       })
       .then(function (createdProject) {
         if(createdProject){
+          console.log("Project Created")
           // respond with json data of new user project.
           res.json(createdProject);
         }
       })
       .fail(function (error) {
-        console.log(error, " why are we failing? ");
+        console.log(error, " failed trying to create a project ");
         next(error);
       });
   },
@@ -50,10 +50,12 @@ module.exports = {
     var findProject = Q.nbind(Project.findOne, Project);
     findProject({ObjectID: projectId})
       .then(function (project) {
+
         // returns searched for project if successful.
         res.json(project);
       })
       .fail(function (error) {
+        console.log("Failed trying to find a project: ", error)
         next(error);
       });
   },
@@ -66,6 +68,7 @@ module.exports = {
         res.json(projects);
       })
       .fail(function (error) {
+        console.log("failed trying to find all projects: ", error)
         next(error);
       });
   }
