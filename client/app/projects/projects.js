@@ -1,6 +1,6 @@
 angular.module('drone.projects', [])
 
-.controller('ProjectController', function ($scope, $location, ProjectFactory) {
+.controller('ProjectController', function ($scope, $location, $window, ProjectFactory) {
   //for the adding of the project
   $scope.project = {};
   //for the retriving of all the projects
@@ -8,8 +8,10 @@ angular.module('drone.projects', [])
 
   //A function to add a project to our database
   $scope.addProject = function () {
-    // $scope.loading = true;
-    ProjectFactory.addProject($scope.project)
+    var username = $window.localStorage["com.drone.username"];
+    var project = $scope.project
+    project.username = username;
+    ProjectFactory.addProject(project)
       .then(function () {
         // $scope.loading = false;
         // $location.path('/');
@@ -24,12 +26,12 @@ angular.module('drone.projects', [])
   $scope.getProjects = function () {
     ProjectFactory.getProjects()
       .then(function (projects) {
-        $scope.data.openProjects = projects; 
+        $scope.data.openProjects = projects;
       })
       .catch(function (error) {
         console.log(error);
       });
-  } 
+  }
 
   //Invoke it initally so all projects load into the view
   $scope.getProjects();

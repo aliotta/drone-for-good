@@ -5,7 +5,7 @@ var app = express();
 var port = process.env.PORT || 3333;
 console.log(port);
 
-var mongoURI=process.env.MONGOLAB_URI || 'mongodb://localhost/drone';
+var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/drone';
 
 console.log(mongoURI);
 
