@@ -14,10 +14,9 @@ angular.module('drone.projects', [])
     ProjectFactory.addProject(project)
       .then(function () {
         // $scope.loading = false;
-        // $location.path('/');
       })
       .catch(function (error) {
-        console.log(error);
+        console.log(error, "error adding project");
       });
   };
 
