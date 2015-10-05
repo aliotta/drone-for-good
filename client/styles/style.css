@@ -79,25 +79,30 @@ body {
   margin-right: 10px;
 }
 
-#open-projects table {
-  display: flex;
+#open-projects .table {
+  /*display: flex;*/
   flex-direction: column;
   margin-left: 2%;
-
+  overflow-y: scroll;
+  table-layout: fixed;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break:break-word;
 }
 
 #open-projects .project-header td {
-  flex-grow: 1;
-  font-size: 24px;
+  /*flex-grow: 1;*/
+  font-size: 20px;
   padding-left: 2.5%;
-  padding-right: 5%;
+  padding-right: 2.5%;
   text-align: center;
 }
 
 #open-projects .project-data td {
-  flex-grow: 3;
+  /*flex-grow: 1;*/
   padding-left: 5%;
   padding-right: 5%;
+  padding-top: 5px;
 }
 
 /***********************
@@ -148,7 +153,6 @@ a:hover {
 
 td {
   text-align: center;
-  word-wrap: break-word;
 }
 
 .project-header {
