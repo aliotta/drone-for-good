@@ -49,10 +49,7 @@ angular.module('drone.services', [])
     .then(function (resp) {
       return resp;
     })
-
   }
-
-
   //return all functions
   return {
     getProjects: getProjects,

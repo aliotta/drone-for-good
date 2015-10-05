@@ -3,7 +3,7 @@
   <form name="sumbitProject" ng-submit="addProject()">
     <span> What is the title of your project? </span>
     <input type="text" ng-model="project.title" placeholder="Project title"/>
-    <span> Where will is your project? </span>
+    <span> Where will your project take place? </span>
     <input type="text" ng-model="project.location" placeholder="Project location"/>
     <span> Project latitude </span>
     <input type="text" ng-model="project.latitude" placeholder="Project latitude"/>
@@ -13,11 +13,7 @@
     <input type="text" ng-model="project.duration" placeholder="Project duration"/>
     <span> Tell us a bit about your project: </span>
     <input type="text" ng-model="project.description" placeholder="Project description"/>
-    <span> Enter Seeker Number: </span>
-    <input type="text" ng-model="project.seeker" placeholder="Seeker Number"/>
     <button ng-controller="MapController" ng-click="updateMarker()" type="submit">Submit</button>
   </form>
 
 </div>
-
-

@@ -7,23 +7,9 @@ var ProjectSchema = new mongoose.Schema({
   description: String,
   expirationDate: Date,
   title: String,
-  seeker: {
-    type: Number,
-    required: true,
-    // ref: User
-
-  },
-  pilot:{
-    type: Number,
-    // ref: User
-  }
+  creator: String
 });
 
-//this may not be necessary
-// ProjectSchema.pre('save', function(next){
-//
-//   next();
-// });
 
 module.exports = mongoose.model('Project', ProjectSchema);
 
