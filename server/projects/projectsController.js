@@ -72,6 +72,4 @@ module.exports = {
         next(error);
       });
   }
-  //TODO add create new project and get all open projects
-
 };

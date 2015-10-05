@@ -7,7 +7,6 @@ angular.module('drone.services', [])
 })
 .factory('UserFactory', function ($http, $window) {
   //get all users function
-  console.log("what do you mean")
   var getUser = function (username) {
     return $http({
       method: 'GET',
@@ -23,7 +22,7 @@ angular.module('drone.services', [])
   };
 
 })
-.factory('ProjectFactory', function ($http) {
+.factory('ProjectFactory', function ($http, $location) {
   //make an http request with project path to fetch all
   //entries from project table in the db
   var getProjects = function () {
@@ -47,6 +46,7 @@ angular.module('drone.services', [])
       data: project
     })
     .then(function (resp) {
+      $location.path('/projects');
       return resp;
     })
   }
