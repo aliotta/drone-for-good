@@ -20,9 +20,7 @@ angular.module('drone.map', [])
   $scope.getProjects = function() {
     ProjectFactory.getProjects()
     .then(function (projectData) {
-      console.log("Projectdata: ", projectData)
       for (var i = 0; i < projectData.length; i++) {
-        console.log("Counting: ", i)
         var currentEntry = projectData[i];
         $scope.locations[i] = {
           lat: currentEntry.latitude, 
