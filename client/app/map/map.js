@@ -9,7 +9,7 @@ angular.module('drone.map', [])
   //Set image url for marker, and change orgin/anchor so 
   //flagpole bottom centered on marker coordinates
   var image = {
-    url: 'tiny_green_flag',
+    url: '../../assets/tiny_green_flag',
     //size: new google.maps.Size(20, 32),
     origin: new google.maps.Point(0, 0),
     anchor: new google.maps.Point(0, 32)
@@ -22,6 +22,7 @@ angular.module('drone.map', [])
     .then(function (projectData) {
       console.log("Projectdata: ", projectData)
       for (var i = 0; i < projectData.length; i++) {
+        console.log("Counting: ", i)
         var currentEntry = projectData[i];
         $scope.locations[i] = {
           lat: currentEntry.latitude, 
@@ -81,9 +82,9 @@ angular.module('drone.map', [])
         map = new google.maps.Map(mapCanvas, mapOptions)
 
         //Attach all no fly zone geoJSON data 
-        map.data.loadGeoJson('https://raw.githubusercontent.com/mapbox/drone-feedback/master/sources/geojson/5_mile_airport.geojson');
-        map.data.loadGeoJson('https://raw.githubusercontent.com/mapbox/drone-feedback/master/sources/geojson/us_military.geojson');
-        map.data.loadGeoJson('https://raw.githubusercontent.com/mapbox/drone-feedback/master/sources/geojson/us_national_park.geojson');
+        map.data.loadGeoJson('../../assets/5_mile_airport.geojson');
+        map.data.loadGeoJson('../../assets/us_military.geojson');
+        map.data.loadGeoJson('../../assets/us_national_park.geojson');
 
         //Set main styles for no fly zone data
         map.data.setStyle({
