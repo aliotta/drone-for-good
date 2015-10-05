@@ -8,16 +8,17 @@ angular.module('drone.projects', [])
 
   //A function to add a project to our database
   $scope.addProject = function () {
-    var username = $window.localStorage["com.drone.username"];
-    var project = $scope.project
-    project.username = username;
-    ProjectFactory.addProject(project)
-      .then(function () {
-        //just because ...?
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // var username = $window.localStorage["com.drone.username"];
+    // var project = $scope.project
+    // project.username = username;
+    // console.log("PROJECT ADDED", project)
+    // ProjectFactory.addProject(project)
+    //   .then(function () {
+    //     //just because ...?
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
   };
 
   //Add a function to get all existing projects from the database

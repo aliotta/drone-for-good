@@ -118,6 +118,10 @@ body {
       );
 }
 
+#user {
+  font-size: 18px;
+}
+
 .navigation {
   border-bottom: 2px solid black;
 }

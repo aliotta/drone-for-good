@@ -1,6 +1,6 @@
 angular.module('drone.map', [])
 
-.controller('MapController', function ($scope, $location, ProjectFactory) {
+.controller('MapController', function ($scope, $location, ProjectFactory, $window) {
   //Get project data
   $scope.data = {};
   $scope.locations = [];
@@ -98,6 +98,9 @@ angular.module('drone.map', [])
 
   //Function for updating markers when new project submitted
   $scope.updateMarker = function(project) {
+    var username = $window.localStorage["com.drone.username"];
+    var project = $scope.project
+    project.username = username;
     ProjectFactory.addProject(project)
     .then(function () {
     ProjectFactory.getProjects()
