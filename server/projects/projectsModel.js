@@ -2,14 +2,26 @@ var mongoose = require('mongoose');
 
 var ProjectSchema = new mongoose.Schema({
   location: String,
-  latitude: Number,
-  longitude: Number,
+  latitude: {
+    type: Number,
+    required: true
+  },
+  longitude: {
+    type: Number,
+    required: true
+  },
   description: String,
   expirationDate: Date,
   title: String,
   creator: String
 });
-
+/*
+username: {
+  type: String,
+  required: true,
+  unique: true
+},
+*/
 
 module.exports = mongoose.model('Project', ProjectSchema);
 
