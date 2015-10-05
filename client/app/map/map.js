@@ -29,9 +29,15 @@ angular.module('drone.map', [])
         map = new google.maps.Map(mapCanvas, mapOptions)
 
         //Attach all no fly zone geoJSON data 
-        map.data.loadGeoJson('../../assets/5_mile_airport.geojson');
-        map.data.loadGeoJson('../../assets/us_military.geojson');
-        map.data.loadGeoJson('../../assets/us_national_park.geojson');
+        //map.data.loadGeoJson('../../assets/5_mile_airport.geojson');
+        //map.data.loadGeoJson('../../assets/us_military.geojson');
+        map.data.loadGeoJson('../../assets/ca_military.geojson');
+        map.data.loadGeoJson('../../assets/ca_national_park.geojson');
+        map.data.loadGeoJson('../../assets/5_mile_airport_ca.geojson');
+        map.data.loadGeoJson('../../assets/us_military_sub_CA.geojson');
+        map.data.loadGeoJson('../../assets/us_national_park_sub_CA.geojson');
+        map.data.loadGeoJson('../../assets/5_mile_airport_sub_CA.geojson');
+        //map.data.loadGeoJson('../../assets/us_national_park.geojson');
 
 
         //Set main styles for no fly zone data
