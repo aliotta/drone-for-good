@@ -16,6 +16,40 @@ angular.module('drone.map', [])
   };
 
   //A method to get project data from project factory, and populate
+  //Initialize map object and add to dom
+  $scope.initialize = function () {
+        //Grab map element in DOM and specify options
+        var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+          center: new google.maps.LatLng(37.789, -122.416),
+          zoom: 9,
+          mapTypeId: google.maps.MapTypeId.HYBRID
+        }
+        //Make new instance of google maps object
+        map = new google.maps.Map(mapCanvas, mapOptions)
+
+        //Attach all no fly zone geoJSON data 
+        map.data.loadGeoJson('../../assets/5_mile_airport.geojson');
+        map.data.loadGeoJson('../../assets/us_military.geojson');
+        map.data.loadGeoJson('../../assets/us_national_park.geojson');
+
+
+        //Set main styles for no fly zone data
+        map.data.setStyle({
+          fillOpacity: .5,
+          strokeWeight: 2,
+          fillColor: 'red'
+        });
+
+        // Iterate over testMarkers and add a marker for each one.
+        // Pass addMarker a latLng, map instance, and infowindow instance
+        for (var i = 0; i < $scope.locations.length; i++) {
+          var location = $scope.locations[i];
+          $scope.addMarker(location, map, $scope.makeInfoWindow($scope.descriptions[i]) );
+        }
+
+  }
+
   //scope properties with coordinates and descriptions.
   $scope.getProjects = function() {
     ProjectFactory.getProjects()
@@ -30,11 +64,14 @@ angular.module('drone.map', [])
         };
         $scope.descriptions[i] = '<p>' + currentEntry.description + '</p>'
       }
+    })
+    .then(function () {
+      $scope.initialize()
     });
   };
 
   //Invoke getProjects to populate our locations and descriptions arrays
-  $scope.getProjects();
+  //$scope.getProjects();
 
   //A function for creating a new info window.  
   $scope.makeInfoWindow = function (contentString) {
@@ -58,52 +95,33 @@ angular.module('drone.map', [])
     })
   };
 
-  //TEST CODE for updating markers when new project submitted
-  $scope.updateMarker = function() {
-    $scope.getProjects();
-    var newLocation = $scope.locations[$scope.locations.length-1];
-    var newDescription = $scope.descriptions[$scope.descriptions.length-1];
-    $scope.addMarker(newLocation, map, $scope.makeInfoWindow(newDescription));
-  }
+  //Function for updating markers when new project submitted
+  $scope.updateMarker = function(project) {
+    ProjectFactory.addProject(project)
+    .then(function () {
+    ProjectFactory.getProjects()
+    .then(function (projects) {
+      var currentEntry = projects[projects.length-1];
+      var newLocation = {
+          lat: currentEntry.latitude, 
+          lng: currentEntry.longitude
+      };
+      var newDescription = '<p>' + currentEntry.description + '</p>';
+      $scope.addMarker(newLocation, map, $scope.makeInfoWindow(newDescription));
+    })  
+    })
 
+    // $scope.getProjects()
+    // .then(function () {
+    //   var newLocation = $scope.locations[$scope.locations.length-1];
+    //   var newDescription = $scope.descriptions[$scope.descriptions.length-1];
+    //   $scope.addMarker(newLocation, map, $scope.makeInfoWindow(newDescription));
+    // });
+  };
 
-
-
-  //Initialize map object and add to dom
-  $scope.initialize = function () {
-        //Grab map element in DOM and specify options
-        var mapCanvas = document.getElementById('map');
-        var mapOptions = {
-          center: new google.maps.LatLng(37.789, -122.416),
-          zoom: 9,
-          mapTypeId: google.maps.MapTypeId.HYBRID
-        }
-        //Make new instance of google maps object
-        map = new google.maps.Map(mapCanvas, mapOptions)
-
-        //Attach all no fly zone geoJSON data 
-        map.data.loadGeoJson('../../assets/5_mile_airport.geojson');
-        map.data.loadGeoJson('../../assets/us_military.geojson');
-        map.data.loadGeoJson('../../assets/us_national_park.geojson');
-
-        //Set main styles for no fly zone data
-        map.data.setStyle({
-          fillOpacity: .5,
-          strokeWeight: 2,
-          fillColor: 'red'
-        });
-
-        // Iterate over testMarkers and add a marker for each one.
-        // Pass addMarker a latLng, map instance, and infowindow instance
-        for (var i = 0; i < $scope.locations.length; i++) {
-          var location = $scope.locations[i];
-          $scope.addMarker(location, map, $scope.makeInfoWindow($scope.descriptions[i]) );
-        }
-
-  }
 
   //When page loads, create the map
-  google.maps.event.addDomListener(window, 'load', $scope.initialize);
+  google.maps.event.addDomListener(window, 'load', $scope.getProjects);
 });
 
 

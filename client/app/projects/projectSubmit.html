@@ -1,6 +1,6 @@
 <div id='submit-projects'>
 <h1>Create a Project</h1>
-  <form name="sumbitProject" ng-submit="addProject()">
+  <form name="sumbitProject" >
     <span> What is the title of your project? </span>
     <input type="text" ng-model="project.title" placeholder="Project title"/>
     <span> Where will your project take place? </span>
@@ -13,7 +13,7 @@
     <input type="text" ng-model="project.duration" placeholder="Project duration"/>
     <span> Tell us a bit about your project: </span>
     <input type="text" ng-model="project.description" placeholder="Project description"/>
-    <button ng-controller="MapController" ng-click="updateMarker()" type="submit">Submit</button>
+    <button ng-controller="MapController" ng-click="updateMarker(project)" type="submit">Submit</button>
   </form>
 
 </div>
