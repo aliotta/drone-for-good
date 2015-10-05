@@ -33,7 +33,11 @@ var UserSchema = new mongoose.Schema({
     type: String,
     // required: true
   },
-  phoneNumber: String,
+  emailAddress: {
+    type: String,
+    required: true,
+    unique: true
+},
   userType: String,
   salt: String
 
