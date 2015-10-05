@@ -33,11 +33,10 @@ module.exports = {
     console.log("~~~~~are you a seeker?~~~~~", req.body);
     var username  = req.body.username,
         password  = req.body.password,
-        email = req.body.email,
         location = req.body.location,
         firstName = req.body.firstName,
         lastName = req.body.lastName,
-        phoneNumber = req.body.phoneNumber,
+        emailAddress = req.body.emailAddress,
         userType = req.body.userType,
         create,
         newUser;
@@ -55,11 +54,10 @@ module.exports = {
           newUser = {
             username: username,
             password: password,
-            email: email,
             location: location,
             firstName: firstName,
             lastName: lastName,
-            phoneNumber: phoneNumber,
+            emailAddress: emailAddress,
             userType: userType
           };
           return create(newUser)

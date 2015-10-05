@@ -1,14 +1,14 @@
 angular.module('drone.users', [])
 
 .controller('UsersController', function ($scope, $location, UserFactory, $window) {
-  //Make a pilot object a property of the scope
-  $scope.pilot = {};
+  //Make a user object a property of the scope
+  $scope.user = {};
 
-  //A method for making an api call to populate pilot object with relevant properties
+  //A method for making an api call to populate user object with relevant properties
   $scope.getProfile = function () {
     UserFactory.getUser($window.localStorage["com.drone.username"])
       .then(function (profile) {
-        $scope.pilot = profile; 
+        $scope.user = profile;
       })
       .catch(function (error) {
         console.log(error);

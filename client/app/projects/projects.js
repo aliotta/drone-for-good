@@ -11,12 +11,15 @@ angular.module('drone.projects', [])
     var username = $window.localStorage["com.drone.username"];
     var project = $scope.project
     project.username = username;
+    console.log("~~~project~~~", project);
     ProjectFactory.addProject(project)
       .then(function () {
-        // $scope.loading = false;
+
+        console.log("~~~let's go to projects!~~~");
+        // $location.path('/projects');
       })
       .catch(function (error) {
-        console.log(error, "error adding project");
+        console.log(error, "~~I'm an error in project.js~~");
       });
   };
 

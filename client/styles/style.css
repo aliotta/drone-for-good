@@ -41,8 +41,10 @@ body {
 }
 
 .content {
-  width: 9%;
+  width: 20%;
   flex-grow: 1;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #map {
@@ -73,22 +75,29 @@ body {
 #signup form *, #signin form *{
   flex-grow: 1;
   margin-top: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #open-projects table {
   display: flex;
   flex-direction: column;
+  margin-left: 2%;
 
 }
 
-#open-projects thead {
+#open-projects .project-header td {
   flex-grow: 1;
+  font-size: 24px;
+  padding-left: 2.5%;
+  padding-right: 5%;
+  text-align: center;
 }
 
-#open-projects tbody {
-  flex-grow: 6;
+#open-projects .project-data td {
+  flex-grow: 3;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 /***********************
@@ -97,16 +106,15 @@ body {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #66C266;
+  background-image:
+      linear-gradient(
+        45deg,
+        #66C266, white
+      );
 }
 
 .navigation {
   border-bottom: 2px solid black;
-}
-
-.nav-items {
-  border-left: 2px solid black;
-
 }
 
 .navigation h1 {
@@ -140,7 +148,7 @@ a:hover {
 
 td {
   text-align: center;
-  wrod-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .project-header {
