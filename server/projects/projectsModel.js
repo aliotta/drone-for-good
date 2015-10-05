@@ -2,28 +2,26 @@ var mongoose = require('mongoose');
 
 var ProjectSchema = new mongoose.Schema({
   location: String,
-  latitude: Number,
-  longitude: Number,
+  latitude: {
+    type: Number,
+    required: true
+  },
+  longitude: {
+    type: Number,
+    required: true
+  },
   description: String,
   expirationDate: Date,
   title: String,
-  seeker: {
-    type: Number,
-    required: true,
-    // ref: User
-
-  },
-  pilot:{
-    type: Number,
-    // ref: User
-  }
+  creator: String
 });
-
-//this may not be necessary
-// ProjectSchema.pre('save', function(next){
-//
-//   next();
-// });
+/*
+username: {
+  type: String,
+  required: true,
+  unique: true
+},
+*/
 
 module.exports = mongoose.model('Project', ProjectSchema);
 
