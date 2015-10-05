@@ -41,8 +41,10 @@ body {
 }
 
 .content {
-  width: 9%;
+  width: 20%;
   flex-grow: 1;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #map {
@@ -88,7 +90,7 @@ body {
 }
 
 #open-projects tbody {
-  flex-grow: 6;
+  flex-grow: 3;
 }
 
 /***********************
@@ -97,16 +99,15 @@ body {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #66C266;
+  background-image:
+      linear-gradient(
+        45deg,
+        #66C266, white
+      );
 }
 
 .navigation {
   border-bottom: 2px solid black;
-}
-
-.nav-items {
-  border-left: 2px solid black;
-
 }
 
 .navigation h1 {

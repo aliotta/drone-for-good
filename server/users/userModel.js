@@ -6,10 +6,6 @@ var mongoose = require('mongoose'),
 
 var UserSchema = new mongoose.Schema({
   //_id: Number, //_id is not necessary; Mongo auto increments
-  email: {
-    type: String,
-    // required: true
-  },
   username: {
     type: String,
     required: true,
@@ -33,7 +29,11 @@ var UserSchema = new mongoose.Schema({
     type: String,
     // required: true
   },
-  phoneNumber: String,
+  emailAddress: {
+    type: String,
+    required: true,
+    unique: true
+},
   userType: String,
   salt: String
 
