@@ -2,18 +2,14 @@
 
   <!-- Use ng-repeat to list all project titles, location -->
   <table>
-    <thead>
-      <th>Title</th>
-      <th>Owner</th>
-      <th>Location</th>
-      <th>Time Frame</th>
-    </thead>
     <tbody>
+      <tr class="project-header">
+        <td>Title</td>
+        <td>Location</td>
+      </tr>
       <tr ng-repeat="project in data.openProjects">
         <td>{{ project.title }}</td>
-        <td>{{ project.seeker }}</td>
         <td>{{ project.location }}</td>
-        <td>{{ project.duration }}</td>
       </tr>
     </tbody>
   </table>

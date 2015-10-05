@@ -10,17 +10,18 @@
   </head>
   <body>
     <nav class="navigation">
-      <h1>Drones for Good</h1>      
+      <h1>Drones for Good</h1>
       <div class="nav-items">
-        <a class="selected" href="#/home">Map</a>
+        <a href="#/home">Map</a>
+        <a href="#/about">About</a>
         <a href="#/userProfile">Profile</a>
-        <a href="#/projects">All Projects</a> 
-        <a href="#/submitProjects">Create a Project</a> 
-        <a ng-controller="AuthController" ng-click="logout()" href="#/logout">Logout</a>   
+        <a href="#/projects">All Projects</a>
+        <a href="#/submitProjects">Create a Project</a>
+        <a ng-controller="AuthController" ng-click="logout()" href="#/logout">Logout</a>
       </div>
     </nav>
     <div class="main-body">
-      
+
 
       <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
       <div class="content" ng-view></div>
@@ -28,16 +29,17 @@
       <div ng-controller="MapController" id="map"></div>
 
     </div>
+
     <script>
       //Marker coordinates
       // var testMarkers = [
-      //   { lat: 37.909884, lng: -122.574783}, 
+      //   { lat: 37.909884, lng: -122.574783},
       //   { lat: 37.842677, lng: -122.116104},
       //   { lat: 37.961874, lng: -122.223221},
       //   { lat: 37.540574, lng: -122.437454}
       // ];
 
-      // //Set image url for marker, and change orgin/anchor so 
+      // //Set image url for marker, and change orgin/anchor so
       // //flagpole bottom centered on marker coordinates
       // var image = {
       //   url: 'tiny_green_flag',
@@ -54,7 +56,7 @@
       //   '<p>Tads SF Bay tide coverage</p>'
       // ];
 
-      //A function for creating a new info window.  
+      //A function for creating a new info window.
       // var makeInfoWindow = function (contentString) {
       //   var infowindow = new google.maps.InfoWindow({
       //     content: contentString,
@@ -76,7 +78,7 @@
       //   })
       // };
 
-      
+
     </script>
 
 

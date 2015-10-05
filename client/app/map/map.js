@@ -57,6 +57,17 @@ angular.module('drone.map', [])
     })
   };
 
+  //TEST CODE for updating markers when new project submitted
+  $scope.updateMarker = function() {
+    $scope.getProjects();
+    var newLocation = $scope.locations[$scope.locations.length-1];
+    var newDescription = $scope.descriptions[$scope.descriptions.length-1];
+    $scope.addMarker(newLocation, map, $scope.makeInfoWindow(newDescription));
+  }
+
+
+
+
   //Initialize map object and add to dom
   $scope.initialize = function () {
         //Grab map element in DOM and specify options
@@ -67,7 +78,7 @@ angular.module('drone.map', [])
           mapTypeId: google.maps.MapTypeId.HYBRID
         }
         //Make new instance of google maps object
-        var map = new google.maps.Map(mapCanvas, mapOptions)
+        map = new google.maps.Map(mapCanvas, mapOptions)
 
         //Attach all no fly zone geoJSON data 
         map.data.loadGeoJson('https://raw.githubusercontent.com/mapbox/drone-feedback/master/sources/geojson/5_mile_airport.geojson');
