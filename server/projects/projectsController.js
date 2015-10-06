@@ -26,7 +26,8 @@ module.exports = {
             description: req.body.description,
             expirationDate: req.body.expirationDate,
             title: req.body.title,
-            creator: req.body.username
+            creator: req.body.username,
+            contactEmailAddress: req.body.emailAddress
           });
           return create(project);
         }

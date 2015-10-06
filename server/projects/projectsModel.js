@@ -12,6 +12,7 @@ var ProjectSchema = new mongoose.Schema({
   },
   description: String,
   expirationDate: Date,
+  contactEmailAddress: String,
   title: String,
   creator: String
 });

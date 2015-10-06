@@ -1,6 +1,6 @@
 angular.module('drone.map', [])
 
-.controller('MapController', function ($scope, $location, ProjectFactory, $window) {
+.controller('MapController', function ($scope, $location, ProjectFactory, UserFactory, $window) {
   //Get project data
   $scope.data = {};
   $scope.locations = [];
@@ -101,19 +101,30 @@ angular.module('drone.map', [])
     var username = $window.localStorage["com.drone.username"];
     var project = $scope.project
     project.username = username;
-    ProjectFactory.addProject(project)
-    .then(function () {
-    ProjectFactory.getProjects()
-    .then(function (projects) {
-      var currentEntry = projects[projects.length-1];
-      var newLocation = {
-          lat: currentEntry.latitude, 
-          lng: currentEntry.longitude
-      };
-      var newDescription = '<p>' + currentEntry.description + '</p>';
-      $scope.addMarker(newLocation, map, $scope.makeInfoWindow(newDescription));
-    })  
+
+    UserFactory.getUser(username)
+    .then(function(profile){
+      console.log("user email: ", profile)
+      project.emailAddress = profile.emailAddress;
     })
+    .then(function(){
+
+      ProjectFactory.addProject(project)
+      .then(function () {
+        ProjectFactory.getProjects()
+        .then(function (projects) {
+          var currentEntry = projects[projects.length-1];
+          var newLocation = {
+              lat: currentEntry.latitude, 
+              lng: currentEntry.longitude
+          };
+          var newDescription = '<p>' + currentEntry.description + '</p>';
+          $scope.addMarker(newLocation, map, $scope.makeInfoWindow(newDescription));
+        })  
+      })
+    })
+
+    
 
     // $scope.getProjects()
     // .then(function () {

@@ -8,6 +8,8 @@ angular.module('drone.projects', [])
 
   //A function to add a project to our database
   $scope.addProject = function () {
+    //commented out because it is unused look at map.js update marker... TODO chnage this fact
+
     // var username = $window.localStorage["com.drone.username"];
     // var project = $scope.project
     // project.username = username;
