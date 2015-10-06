@@ -92,9 +92,9 @@ body {
 
 #open-projects .project-header td {
   /*flex-grow: 1;*/
-  font-size: 20px;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
+  font-size: 16px;
+  padding-left: 0%;
+  padding-right: 0%;
   text-align: center;
 }
 
