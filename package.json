@@ -19,7 +19,7 @@
     "mongod": "^1.3.0",
     "mongoose": "^4.1.0",
     "morgan": "^1.1.1",
-    "nodemon": "^1.7.1",
+    "nodemon": "^2.0.3",
     "normalize.css": "^3.0.3",
     "npm": "^3.3.4",
     "passport": "^0.2.0",
